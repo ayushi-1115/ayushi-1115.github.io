@@ -21,6 +21,9 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
@@ -51,12 +54,15 @@
       </nav>
 
       <div class="nav-actions">
-        <!-- Dual Resume Download Dropdown -->
+        <!-- Dual Resume Download & Preview Dropdown -->
         <div class="dropdown" id="resume-dropdown-nav">
           <button type="button" class="btn btn-outline btn-sm dropdown-toggle" id="btn-resume-dropdown">
             <i class="fa-solid fa-file-arrow-down"></i> Resume <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i>
           </button>
           <div class="dropdown-menu">
+            <button type="button" class="dropdown-item" id="btn-preview-resume">
+              <i class="fa-solid fa-eye text-blue"></i> In-Browser Preview
+            </button>
             <a href="../project_parchment/Ayushi_Patel_Updated_Resume.pdf" target="_blank" class="dropdown-item">
               <i class="fa-solid fa-file-pdf text-blue"></i> Download PDF
             </a>
@@ -167,7 +173,7 @@
       </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills Section & Live GitHub Stats -->
     <section class="section skills" id="skills">
       <div class="section-container">
         <div class="section-header">
@@ -233,6 +239,33 @@
               <span class="skill-pill"><i class="fa-solid fa-globe"></i> Render Deployment</span>
               <span class="skill-pill"><i class="fa-solid fa-vial"></i> Jupyter Notebook</span>
               <span class="skill-pill"><i class="fa-solid fa-code"></i> VS Code</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live GitHub Profile & Stats Cards -->
+        <div class="github-stats-container">
+          <div class="github-card glass-panel">
+            <div class="github-card-icon"><i class="fa-brands fa-python"></i></div>
+            <div>
+              <div class="github-card-val">85% Python</div>
+              <div class="github-card-lbl">Primary Core Language</div>
+            </div>
+          </div>
+
+          <div class="github-card glass-panel">
+            <div class="github-card-icon"><i class="fa-brands fa-github"></i></div>
+            <div>
+              <div class="github-card-val">ayushi-1115</div>
+              <div class="github-card-lbl">Public GitHub Profile</div>
+            </div>
+          </div>
+
+          <div class="github-card glass-panel">
+            <div class="github-card-icon"><i class="fa-solid fa-code-commit"></i></div>
+            <div>
+              <div class="github-card-val">Active</div>
+              <div class="github-card-lbl">Docs-as-Code &amp; Systems Repos</div>
             </div>
           </div>
         </div>
@@ -662,7 +695,7 @@
     </section>
   </main>
 
-  <!-- Modal Container for Architecture Document Viewer -->
+  <!-- Modal Container for Architecture Document Viewer & Resume Preview -->
   <div class="modal-overlay" id="doc-modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -670,8 +703,37 @@
         <button type="button" class="modal-close" id="modal-close-btn">&times;</button>
       </div>
       <div class="modal-body" id="modal-doc-body">
-        Loading system architecture document...
+        Loading document...
       </div>
+    </div>
+  </div>
+
+  <!-- Floating AI Chatbot Assistant Widget -->
+  <button type="button" class="chatbot-toggle" id="chatbot-toggle" title="Ask Ayushi's AI Assistant">
+    <i class="fa-solid fa-robot"></i>
+  </button>
+
+  <div class="chatbot-window" id="chatbot-window">
+    <div class="chat-header">
+      <div class="chat-title">
+        <i class="fa-solid fa-robot text-blue"></i> Ask Ayushi's AI Assistant
+      </div>
+      <button type="button" class="modal-close" id="chat-close-btn" style="font-size: 18px;">&times;</button>
+    </div>
+    <div class="chat-body" id="chat-messages">
+      <div class="chat-msg bot">
+        Hi! I'm Ayushi's AI Assistant. Ask me anything about her Python skills, projects, or work experience!
+        <div class="prompt-pills">
+          <span class="prompt-pill" data-ask="skills">Core Skills</span>
+          <span class="prompt-pill" data-ask="experience">Work History</span>
+          <span class="prompt-pill" data-ask="projects">Projects</span>
+          <span class="prompt-pill" data-ask="contact">Contact Info</span>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chat-input" placeholder="Ask a question about Ayushi...">
+      <button type="button" class="btn btn-sm btn-primary" id="chat-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
     </div>
   </div>
 

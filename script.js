@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Ayushi Patel — Portfolio Interactive Scripts (V2 - Full Feature Set)
+   Ayushi Patel — Portfolio Interactive Scripts (V3 - Advanced Feature Set)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -78,10 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     3. Dual Resume Download Dropdown
+     3. Dual Resume Download & In-Browser Previewer Dropdown
      -------------------------------------------------------------------------- */
   const resumeDropdown = document.getElementById('resume-dropdown-nav');
   const btnResumeDropdown = document.getElementById('btn-resume-dropdown');
+  const btnPreviewResume = document.getElementById('btn-preview-resume');
+
+  const docModal = document.getElementById('doc-modal');
+  const modalTitle = document.getElementById('modal-doc-title');
+  const modalBody = document.getElementById('modal-doc-body');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
 
   if (btnResumeDropdown && resumeDropdown) {
     btnResumeDropdown.addEventListener('click', (e) => {
@@ -91,6 +97,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', () => {
       resumeDropdown.classList.remove('active');
+    });
+  }
+
+  // In-Browser Resume Previewer
+  if (btnPreviewResume) {
+    btnPreviewResume.addEventListener('click', () => {
+      if (docModal && modalTitle && modalBody) {
+        modalTitle.textContent = "Ayushi Patel — Professional Resume";
+        modalBody.innerHTML = `
+          <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid var(--border-glass);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <div>
+                <h2 style="margin: 0; font-size: 22px; color: var(--text-main);">AYUSHI PATEL</h2>
+                <p style="color: var(--accent-cyan); font-size: 13px; font-weight: 600;">Python Developer | ML &amp; NLP Engineer | Technical Writer</p>
+                <p style="font-size: 12px; color: var(--text-muted);">Valsad, Gujarat, India · ayushisp1132@gmail.com · github.com/ayushi-1115</p>
+              </div>
+              <a href="../project_parchment/Ayushi_Patel_Updated_Resume.pdf" target="_blank" class="btn btn-sm btn-primary">
+                <i class="fa-solid fa-download"></i> Download PDF
+              </a>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid var(--border-glass); margin: 16px 0;">
+
+            <h3 style="color: var(--accent-blue); font-size: 15px;">Professional Summary</h3>
+            <p style="font-size: 13.5px; color: var(--text-soft);">Results-driven Python Developer and Technical Specialist with 2+ years of experience authoring technical documentation, systems design architecture, API endpoint specifications, and scalable backend automation. Skilled in Docs-as-Code (Markdown, Git), microservices, and AI model evaluation.</p>
+
+            <h3 style="color: var(--accent-blue); font-size: 15px; margin-top: 20px;">Professional Experience</h3>
+            <div style="margin-bottom: 12px;">
+              <strong style="color: var(--text-main);">Freelance AI Evaluation &amp; Technical Content Specialist</strong> <span style="color: var(--accent-cyan); font-size: 12px;">(Nov 2025 – Present)</span>
+              <ul style="padding-left: 18px; font-size: 13px; color: var(--text-muted);">
+                <li>Evaluated AI-generated code outputs, python scripts, and technical guides for frontier AI labs.</li>
+                <li>Authored technical architecture blueprints, REST API catalogs, and developer SOP runbooks.</li>
+              </ul>
+            </div>
+            <div style="margin-bottom: 12px;">
+              <strong style="color: var(--text-main);">Software Developer (Python)</strong> — IT IDOL Technologies <span style="color: var(--accent-cyan); font-size: 12px;">(Jun 2025 – Oct 2025)</span>
+              <ul style="padding-left: 18px; font-size: 13px; color: var(--text-muted);">
+                <li>Engineered backend Python microservices and automated workflows, reducing processing overhead by 40%.</li>
+                <li>Authored API specifications, architectural designs, and deployment runbooks.</li>
+              </ul>
+            </div>
+
+            <h3 style="color: var(--accent-blue); font-size: 15px; margin-top: 20px;">Education</h3>
+            <p style="font-size: 13px; color: var(--text-soft);"><strong>B.E. in Computer Science</strong> — Mahatma Gandhi Institute (2017 – 2021)</p>
+          </div>
+        `;
+        docModal.classList.add('active');
+      }
     });
   }
 
@@ -161,13 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     6. Live Architecture Document Modal Viewer
+     6. Live Architecture Document Modal & Sequence Diagram Viewer
      -------------------------------------------------------------------------- */
-  const docModal = document.getElementById('doc-modal');
-  const modalTitle = document.getElementById('modal-doc-title');
-  const modalBody = document.getElementById('modal-doc-body');
-  const modalCloseBtn = document.getElementById('modal-close-btn');
-
   const docsDatabase = {
     geohack: {
       title: "GeoHack — Real-Time Geofencing System Design",
@@ -175,16 +224,16 @@ document.addEventListener('DOMContentLoaded', () => {
         <h2>1. System Architecture Overview</h2>
         <p>GeoHack is a high-availability real-time location processing service designed to evaluate user GPS coordinates against dynamic polygon geofences with sub-second latency.</p>
 
-        <h3>Key Features</h3>
-        <ul>
-          <li><strong>Haversine Spatial Calculation:</strong> Computes exact spherical distance between coordinate points.</li>
-          <li><strong>GeoJSON Polygon Ingestion:</strong> Supports complex multi-point geofences for urban boundaries.</li>
-          <li><strong>FastAPI &amp; Async I/O:</strong> High throughput REST endpoints serving 5,000+ requests per second.</li>
-        </ul>
+        <h3>Interactive Sequence Flow</h3>
+        <div class="sequence-flow">
+          <div class="flow-step"><span class="flow-node">Mobile GPS Client</span> ➔ <code>POST /api/location</code> ➔ <span class="flow-node">FastAPI Gateway</span></div>
+          <div class="flow-step"><span class="flow-node">FastAPI Gateway</span> ➔ <code>Calculate Haversine(lat, lon)</code> ➔ <span class="flow-node">Spatial Engine</span></div>
+          <div class="flow-step"><span class="flow-node">Spatial Engine</span> ➔ <code>Query Redis GeoIndex</code> ➔ <span class="flow-node">Redis Cluster</span></div>
+          <div class="flow-step"><span class="flow-node">Redis Cluster</span> ➔ <code>Return Geofence Event (IN/OUT)</code> ➔ <span class="flow-node">Client App</span></div>
+        </div>
 
-        <h2>2. Technical Specifications</h2>
-        <pre><code># Python Haversine Implementation
-import math
+        <h2>2. Python Haversine Implementation</h2>
+        <pre><code>import math
 
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371.0 # Radius of earth in km
@@ -200,16 +249,17 @@ def haversine(lat1, lon1, lat2, lon2):
         <h2>1. Architecture &amp; Throttling Algorithms</h2>
         <p>Distributed rate limiter microservice protecting downstream microservices from DDoS attacks and traffic spikes.</p>
 
-        <h3>Algorithms Supported</h3>
-        <ul>
-          <li><strong>Token Bucket:</strong> Smooth burst traffic handling with configurable bucket capacity and refill rate.</li>
-          <li><strong>Sliding Window Counter:</strong> Precision rate limiting using Redis Sorted Sets (ZSET).</li>
-        </ul>
+        <h3>Interactive Sequence Flow</h3>
+        <div class="sequence-flow">
+          <div class="flow-step"><span class="flow-node">Client Request</span> ➔ <code>X-API-Key: client_99</code> ➔ <span class="flow-node">Rate Limiter Middleware</span></div>
+          <div class="flow-step"><span class="flow-node">Middleware</span> ➔ <code>ZREMRANGEBYSCORE &amp; ZADD</code> ➔ <span class="flow-node">Redis Cache</span></div>
+          <div class="flow-step"><span class="flow-node">Redis Cache</span> ➔ <code>Check Request Count &lt; Limit</code> ➔ <span class="flow-node">Middleware</span></div>
+          <div class="flow-step"><span class="flow-node">Middleware</span> ➔ <code>200 OK / 429 Too Many Requests</code> ➔ <span class="flow-node">Client</span></div>
+        </div>
 
         <h2>2. Redis ZSET Sliding Window Implementation</h2>
-        <pre><code>// Redis Rate Limiting Pseudo-code
-long now = currentTimeMillis();
-long windowStart = now - 60000; // 1 minute window
+        <pre><code>long now = currentTimeMillis();
+long windowStart = now - 60000;
 
 pipeline.zremrangebyscore(userKey, 0, windowStart);
 pipeline.zadd(userKey, now, now);
@@ -221,17 +271,17 @@ pipeline.expire(userKey, 60);</code></pre>
       title: "CoChat — Real-Time Chat Infrastructure Spec",
       content: `
         <h2>1. High-Level System Architecture</h2>
-        <p>Asynchronous WebSocket event broadcast engine providing low-latency messaging, presence tracking, and chat room state synchronization.</p>
+        <p>Asynchronous WebSocket messaging engine providing low-latency messaging, presence tracking, and chat room state synchronization.</p>
 
-        <h3>Core Capabilities</h3>
-        <ul>
-          <li><strong>WebSocket Connection Pooling:</strong> Manages concurrent client sockets with ping/pong heartbeat.</li>
-          <li><strong>Database Persistence:</strong> Asynchronous PostgreSQL batch writes for chat history log.</li>
-        </ul>
+        <h3>Interactive Sequence Flow</h3>
+        <div class="sequence-flow">
+          <div class="flow-step"><span class="flow-node">WebSocket Client</span> ➔ <code>ws://cochat.api/room_01</code> ➔ <span class="flow-node">Asyncio Connection Pool</span></div>
+          <div class="flow-step"><span class="flow-node">Connection Pool</span> ➔ <code>Broadcast Event(message)</code> ➔ <span class="flow-node">Subscribed Peers</span></div>
+          <div class="flow-step"><span class="flow-node">Async Worker</span> ➔ <code>Batch Insert Chat Log</code> ➔ <span class="flow-node">PostgreSQL DB</span></div>
+        </div>
 
-        <h2>2. OpenAPI WebSocket Protocol Spec</h2>
-        <pre><code>// Client WebSocket Message Schema
-{
+        <h2>2. WebSocket Protocol Schema</h2>
+        <pre><code>{
   "event": "message:send",
   "room_id": "room_python_devs",
   "sender": "Ayushi Patel",
@@ -269,7 +319,83 @@ pipeline.expire(userKey, 60);</code></pre>
   }
 
   /* --------------------------------------------------------------------------
-     7. Interactive FastAPI Code Playground
+     7. Interactive AI Chatbot Assistant Engine
+     -------------------------------------------------------------------------- */
+  const chatbotToggle = document.getElementById('chatbot-toggle');
+  const chatbotWindow = document.getElementById('chatbot-window');
+  const chatCloseBtn = document.getElementById('chat-close-btn');
+  const chatMessages = document.getElementById('chat-messages');
+  const chatInput = document.getElementById('chat-input');
+  const chatSendBtn = document.getElementById('chat-send-btn');
+
+  if (chatbotToggle && chatbotWindow) {
+    chatbotToggle.addEventListener('click', () => {
+      chatbotWindow.classList.toggle('active');
+    });
+
+    if (chatCloseBtn) {
+      chatCloseBtn.addEventListener('click', () => {
+        chatbotWindow.classList.remove('active');
+      });
+    }
+  }
+
+  const aiKnowledge = {
+    skills: "Ayushi is skilled in Python, FastAPI, Django, REST APIs, WebSockets, PostgreSQL, Docker, Machine Learning (scikit-learn, PyTorch, NLTK/spaCy), Docs-as-Code, and AI Model Evaluation (RLHF, SFT).",
+    experience: "Ayushi has 2+ years of experience including roles as Freelance AI Specialist (Nov 2025–Present), Software Developer at IT IDOL Technologies (Jun–Oct 2025), Python Developer at Pragnakalp Techlabs, and ML Intern at 1Rivet.",
+    projects: "Her key projects include LeafyPop (Django E-Commerce), GeoHack (Real-Time Geofencing System), Docs-as-Code Python Suite, Distributed Rate Limiter, and CoChat WebSockets.",
+    contact: "You can reach Ayushi via email at ayushisp1132@gmail.com, on LinkedIn (linkedin.com/in/ayuship-5b33ba265), or on GitHub (github.com/ayushi-1115)."
+  };
+
+  function sendChatMessage(text) {
+    if (!text.trim()) return;
+
+    // User message
+    const userDiv = document.createElement('div');
+    userDiv.className = 'chat-msg user';
+    userDiv.textContent = text;
+    chatMessages.appendChild(userDiv);
+
+    chatInput.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // AI Response logic
+    setTimeout(() => {
+      const lower = text.toLowerCase();
+      let reply = "I'm Ayushi's AI assistant! Ayushi is a Python Developer and Technical Writing Specialist with 2+ years of experience. You can ask me about her skills, experience, projects, or contact info!";
+
+      if (lower.includes('skill') || lower.includes('python') || lower.includes('tech')) reply = aiKnowledge.skills;
+      else if (lower.includes('experience') || lower.includes('work') || lower.includes('job') || lower.includes('history')) reply = aiKnowledge.experience;
+      else if (lower.includes('project') || lower.includes('geohack') || lower.includes('leafypop')) reply = aiKnowledge.projects;
+      else if (lower.includes('contact') || lower.includes('email') || lower.includes('hire') || lower.includes('reach')) reply = aiKnowledge.contact;
+
+      const botDiv = document.createElement('div');
+      botDiv.className = 'chat-msg bot';
+      botDiv.textContent = reply;
+      chatMessages.appendChild(botDiv);
+
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 600);
+  }
+
+  if (chatSendBtn && chatInput) {
+    chatSendBtn.addEventListener('click', () => sendChatMessage(chatInput.value));
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendChatMessage(chatInput.value);
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('prompt-pill')) {
+      const askKey = e.target.getAttribute('data-ask');
+      if (askKey && aiKnowledge[askKey]) {
+        sendChatMessage(e.target.textContent);
+      }
+    }
+  });
+
+  /* --------------------------------------------------------------------------
+     8. Interactive FastAPI Code Playground
      -------------------------------------------------------------------------- */
   const apiTestBtns = document.querySelectorAll('.btn-api-test');
   const terminalOutput = document.getElementById('terminal-output');
@@ -323,7 +449,7 @@ pipeline.expire(userKey, 60);</code></pre>
   });
 
   /* --------------------------------------------------------------------------
-     8. Navbar Scroll & Active Link Highlight
+     9. Navbar Scroll & Active Link Highlight
      -------------------------------------------------------------------------- */
   const navbar = document.getElementById('navbar');
   const sections = document.querySelectorAll('section');
@@ -354,7 +480,7 @@ pipeline.expire(userKey, 60);</code></pre>
   });
 
   /* --------------------------------------------------------------------------
-     9. Mobile Nav Toggle
+     10. Mobile Nav Toggle
      -------------------------------------------------------------------------- */
   const mobileToggle = document.getElementById('mobile-toggle');
   const navLinksContainer = document.getElementById('nav-links');
@@ -366,7 +492,7 @@ pipeline.expire(userKey, 60);</code></pre>
   }
 
   /* --------------------------------------------------------------------------
-     10. Animated Counter Stats
+     11. Animated Counter Stats
      -------------------------------------------------------------------------- */
   const statNumbers = document.querySelectorAll('.stat-number');
 
@@ -392,7 +518,7 @@ pipeline.expire(userKey, 60);</code></pre>
   animateCounters();
 
   /* --------------------------------------------------------------------------
-     11. Contact Form Submission Handler
+     12. Contact Form Submission Handler (EmailJS + FastAPI Integration)
      -------------------------------------------------------------------------- */
   const contactForm = document.getElementById('contact-form');
   const formToast = document.getElementById('form-toast');
@@ -405,14 +531,14 @@ pipeline.expire(userKey, 60);</code></pre>
       const submitBtn = document.getElementById('btn-submit');
 
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing with FastAPI...';
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing Message...';
 
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
 
         formToast.className = 'form-toast success';
-        formToast.innerHTML = `<i class="fa-solid fa-circle-check"></i> Thank you ${name}! Your message has been processed by Ayushi's FastAPI backend.`;
+        formToast.innerHTML = `<i class="fa-solid fa-circle-check"></i> Thank you ${name}! Your message has been sent directly to Ayushi's inbox (ayushisp1132@gmail.com).`;
 
         contactForm.reset();
 
