@@ -137,7 +137,50 @@ document.addEventListener('DOMContentLoaded', () => {
   animateCounters();
 
   /* --------------------------------------------------------------------------
-     5. Interactive Contact Form Handler
+     5. Live GeoHack Haversine Distance Calculator Demo
+     -------------------------------------------------------------------------- */
+  const btnCalcGeo = document.getElementById('btn-calc-geo');
+  const geoResult = document.getElementById('geo-result');
+
+  if (btnCalcGeo && geoResult) {
+    btnCalcGeo.addEventListener('click', () => {
+      const lat1 = parseFloat(document.getElementById('geo-lat1').value);
+      const lon1 = parseFloat(document.getElementById('geo-lon1').value);
+      const lat2 = parseFloat(document.getElementById('geo-lat2').value);
+      const lon2 = parseFloat(document.getElementById('geo-lon2').value);
+
+      if (isNaN(lat1) || isNaN(lon1) || isNaN(lat2) || isNaN(lon2)) {
+        geoResult.style.display = 'block';
+        geoResult.innerHTML = `<span style="color:#EF4444;">⚠️ Please enter valid numeric coordinates.</span>`;
+        return;
+      }
+
+      // Haversine calculation logic
+      const R = 6371; // km
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      const dist = (R * c).toFixed(2);
+      const inFence = dist <= 100;
+
+      geoResult.style.display = 'block';
+      geoResult.innerHTML = `
+        <div style="background: rgba(59,130,246,0.1); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(59,130,246,0.3);">
+          ⚡ <strong>Calculated Distance:</strong> <span style="color:var(--accent-cyan); font-weight:bold;">${dist} km</span><br>
+          📍 <strong>Geofence Status (100km radius):</strong> 
+          <span style="color:${inFence ? '#10B981' : '#F59E0B'}; font-weight:bold;">
+            ${inFence ? '✅ INSIDE GEOFENCE' : '⚠️ OUT OF BOUNDS'}
+          </span>
+        </div>
+      `;
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     6. Interactive Contact Form Handler
      -------------------------------------------------------------------------- */
   const contactForm = document.getElementById('contact-form');
   const formToast = document.getElementById('form-toast');

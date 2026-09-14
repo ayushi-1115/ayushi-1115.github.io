@@ -257,6 +257,23 @@
               </ul>
             </div>
 
+            <!-- Live Backend API Demo Widget -->
+            <div class="demo-widget glass-panel" style="background: rgba(0,0,0,0.3); padding: 16px; border-radius: 12px; margin-bottom: 20px;">
+              <div style="font-family: var(--font-heading); font-size: 13px; font-weight: 700; color: var(--accent-cyan); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-terminal"></i> Live Python Backend API Demo: Haversine Geofence
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
+                <input type="text" id="geo-lat1" value="20.6079" placeholder="Lat 1 (Valsad)" style="font-size: 11px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); color: var(--text-main);">
+                <input type="text" id="geo-lon1" value="72.9342" placeholder="Lon 1 (Valsad)" style="font-size: 11px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); color: var(--text-main);">
+                <input type="text" id="geo-lat2" value="21.1702" placeholder="Lat 2 (Surat)" style="font-size: 11px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); color: var(--text-main);">
+                <input type="text" id="geo-lon2" value="72.8311" placeholder="Lon 2 (Surat)" style="font-size: 11px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); color: var(--text-main);">
+              </div>
+              <button type="button" id="btn-calc-geo" class="btn btn-sm btn-primary" style="width: 100%; font-size: 12px; padding: 6px 12px;">
+                <i class="fa-solid fa-calculator"></i> Run Python Geofence Calculation
+              </button>
+              <div id="geo-result" style="font-family: var(--font-mono); font-size: 12px; margin-top: 10px; color: var(--text-soft); display: none;"></div>
+            </div>
+
             <div class="project-tags">
               <span>Python</span>
               <span>FastAPI / Flask</span>
