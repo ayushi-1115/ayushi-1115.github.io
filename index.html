@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ayushi Patel — Python Developer | ML & NLP Engineer | Technical Writer</title>
   <meta name="description" content="Portfolio of Ayushi Patel — Python Developer, ML & NLP Engineer, and Technical Writing Specialist with 2+ years of experience building scalable backend microservices, AI evaluation datasets, and systems architecture blueprints.">
-  <meta name="keywords" content="Ayushi Patel, Python Developer, Machine Learning Engineer, NLP Engineer, Technical Writer, Systems Design, Django, Portfolio">
+  <meta name="keywords" content="Ayushi Patel, Python Developer, Machine Learning Engineer, NLP Engineer, Technical Writer, Systems Design, Django, FastAPI, Portfolio">
   <meta name="author" content="Ayushi Patel">
   
-  <!-- Open Graph / Facebook / LinkedIn -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ayushi Patel — Python Developer & ML/NLP Engineer">
   <meta property="og:description" content="Results-driven Python Developer and Technical Specialist with 2+ years of experience authoring technical documentation, API specifications, and scalable backend microservices.">
@@ -45,14 +45,32 @@
         <a href="#about" class="nav-link" id="nav-about"><i class="fa-regular fa-user"></i> About</a>
         <a href="#skills" class="nav-link" id="nav-skills"><i class="fa-solid fa-code"></i> Skills</a>
         <a href="#projects" class="nav-link" id="nav-projects"><i class="fa-solid fa-layer-group"></i> Projects</a>
+        <a href="#playground" class="nav-link" id="nav-playground"><i class="fa-solid fa-terminal"></i> API Playground</a>
         <a href="#experience" class="nav-link" id="nav-experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
         <a href="#contact" class="nav-link" id="nav-contact"><i class="fa-regular fa-paper-plane"></i> Contact</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="../project_parchment/Ayushi_Patel_Updated_Resume.pdf" target="_blank" class="btn btn-outline btn-sm" id="btn-resume">
-          <i class="fa-solid fa-file-arrow-down"></i> Resume
-        </a>
+        <!-- Dual Resume Download Dropdown -->
+        <div class="dropdown" id="resume-dropdown-nav">
+          <button type="button" class="btn btn-outline btn-sm dropdown-toggle" id="btn-resume-dropdown">
+            <i class="fa-solid fa-file-arrow-down"></i> Resume <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a href="../project_parchment/Ayushi_Patel_Updated_Resume.pdf" target="_blank" class="dropdown-item">
+              <i class="fa-solid fa-file-pdf text-blue"></i> Download PDF
+            </a>
+            <a href="../project_parchment/Ayushi_Patel_Updated_Resume.docx" target="_blank" class="dropdown-item">
+              <i class="fa-solid fa-file-word text-blue"></i> Download Word (.docx)
+            </a>
+          </div>
+        </div>
+
+        <!-- Light / Dark Theme Toggle Button -->
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Light/Dark Theme" title="Switch Theme">
+          <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
+
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
           <i class="fa-solid fa-bars"></i>
         </button>
@@ -65,7 +83,7 @@
     <section class="hero" id="hero">
       <div class="hero-container">
         <div class="hero-badge animate-fade-in">
-          <span class="pulse-dot"></span> Open for Engineering & Technical Writing Roles
+          <span class="pulse-dot"></span> Open for Engineering &amp; Technical Writing Roles
         </div>
 
         <h1 class="hero-title animate-fade-up">
@@ -77,7 +95,7 @@
         </div>
 
         <p class="hero-description animate-fade-up delay-2">
-          Results-driven <strong>Python Developer</strong> and <strong>Technical Specialist</strong> with <strong>2+ years of experience</strong> authoring high-impact technical documentation, API specifications, and scalable backend microservices. Skilled in ML/NLP pipelines, Docs-as-Code, and AI model evaluation.
+          Results-driven <strong>Python Developer</strong> and <strong>Technical Specialist</strong> with <strong>2+ years of experience</strong> authoring high-impact technical documentation, API specifications, and scalable backend microservices. Skilled in FastAPI, ML/NLP pipelines, Docs-as-Code, and AI model evaluation.
         </p>
 
         <div class="hero-ctas animate-fade-up delay-3">
@@ -103,11 +121,11 @@
           </div>
           <div class="stat-card">
             <h3 class="stat-number" data-target="15">15+</h3>
-            <p class="stat-label">Systems Architecture & Docs</p>
+            <p class="stat-label">Systems Architecture &amp; Docs</p>
           </div>
           <div class="stat-card">
             <h3 class="stat-number" data-target="100">100%</h3>
-            <p class="stat-label">Code & AI Eval Accuracy</p>
+            <p class="stat-label">Code &amp; AI Eval Accuracy</p>
           </div>
         </div>
       </div>
@@ -127,7 +145,7 @@
               <i class="fa-solid fa-code-branch"></i>
             </div>
             <h3>Backend Engineering</h3>
-            <p>Proficient in Python, Django, REST APIs, WebSockets, PostgreSQL, and Docker. I build resilient microservices and automated data pipelines designed for high throughput and clean maintainability.</p>
+            <p>Proficient in Python, FastAPI, Django, REST APIs, WebSockets, PostgreSQL, and Docker. I build resilient microservices and automated data pipelines designed for high throughput and clean maintainability.</p>
           </div>
 
           <div class="about-card glass-panel">
@@ -158,7 +176,6 @@
         </div>
 
         <div class="skills-grid">
-          <!-- Card 1 -->
           <div class="skill-category glass-panel">
             <div class="category-header">
               <i class="fa-solid fa-terminal category-icon"></i>
@@ -166,15 +183,14 @@
             </div>
             <div class="skill-pills">
               <span class="skill-pill"><i class="fa-brands fa-python"></i> Python</span>
+              <span class="skill-pill"><i class="fa-solid fa-bolt"></i> FastAPI</span>
               <span class="skill-pill"><i class="fa-solid fa-database"></i> SQL / PostgreSQL</span>
               <span class="skill-pill"><i class="fa-solid fa-server"></i> Django</span>
-              <span class="skill-pill"><i class="fa-solid fa-bolt"></i> REST APIs</span>
+              <span class="skill-pill"><i class="fa-solid fa-network-wired"></i> REST APIs &amp; WebSockets</span>
               <span class="skill-pill"><i class="fa-brands fa-docker"></i> Docker</span>
-              <span class="skill-pill"><i class="fa-solid fa-network-wired"></i> WebSockets</span>
             </div>
           </div>
 
-          <!-- Card 2 -->
           <div class="skill-category glass-panel">
             <div class="category-header">
               <i class="fa-solid fa-diagram-project category-icon"></i>
@@ -190,7 +206,6 @@
             </div>
           </div>
 
-          <!-- Card 3 -->
           <div class="skill-category glass-panel">
             <div class="category-header">
               <i class="fa-solid fa-microchip category-icon"></i>
@@ -206,7 +221,6 @@
             </div>
           </div>
 
-          <!-- Card 4 -->
           <div class="skill-category glass-panel">
             <div class="category-header">
               <i class="fa-solid fa-cloud category-icon"></i>
@@ -233,13 +247,22 @@
           <h2 class="section-title">Featured Projects &amp; Architecture Specs</h2>
         </div>
 
+        <!-- Project Category Filter Tabs -->
+        <div class="filter-tabs">
+          <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
+          <button type="button" class="filter-btn" data-filter="python">Python &amp; FastAPI</button>
+          <button type="button" class="filter-btn" data-filter="architecture">Systems Architecture</button>
+          <button type="button" class="filter-btn" data-filter="fullstack">Full-Stack</button>
+        </div>
+
         <div class="projects-grid">
 
           <!-- Project 1: GeoHack -->
-          <article class="project-card glass-panel" id="project-geohack">
+          <article class="project-card glass-panel" data-category="python architecture">
             <div class="project-header">
               <span class="project-badge">Full-Stack &amp; Spatial System</span>
               <div class="project-links">
+                <button type="button" class="project-link btn-view-doc" data-doc="geohack" title="View Full System Architecture Spec"><i class="fa-solid fa-file-lines"></i> Read Architecture Spec</button>
                 <a href="https://github.com/ayushi-1115/geohack" target="_blank" class="project-link" title="GitHub Repository"><i class="fa-brands fa-github"></i> View Code &amp; Repo</a>
               </div>
             </div>
@@ -260,7 +283,7 @@
             <!-- Live Backend API Demo Widget -->
             <div class="demo-widget glass-panel" style="background: rgba(0,0,0,0.3); padding: 16px; border-radius: 12px; margin-bottom: 20px;">
               <div style="font-family: var(--font-heading); font-size: 13px; font-weight: 700; color: var(--accent-cyan); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
-                <i class="fa-solid fa-terminal"></i> Live Python Backend API Demo: Haversine Geofence
+                <i class="fa-solid fa-terminal"></i> Live Python Haversine Geofence Demo
               </div>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;">
                 <input type="text" id="geo-lat1" value="20.6079" placeholder="Lat 1 (Valsad)" style="font-size: 11px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); color: var(--text-main);">
@@ -269,14 +292,14 @@
                 <input type="text" id="geo-lon2" value="72.8311" placeholder="Lon 2 (Surat)" style="font-size: 11px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); color: var(--text-main);">
               </div>
               <button type="button" id="btn-calc-geo" class="btn btn-sm btn-primary" style="width: 100%; font-size: 12px; padding: 6px 12px;">
-                <i class="fa-solid fa-calculator"></i> Run Python Geofence Calculation
+                <i class="fa-solid fa-calculator"></i> Run Calculation
               </button>
               <div id="geo-result" style="font-family: var(--font-mono); font-size: 12px; margin-top: 10px; color: var(--text-soft); display: none;"></div>
             </div>
 
             <div class="project-tags">
               <span>Python</span>
-              <span>FastAPI / Flask</span>
+              <span>FastAPI</span>
               <span>Haversine Algorithm</span>
               <span>GeoJSON</span>
               <span>System Architecture</span>
@@ -284,7 +307,7 @@
           </article>
 
           <!-- Project 2: Docs-as-Code Python Scripts Suite -->
-          <article class="project-card glass-panel" id="project-script-suite">
+          <article class="project-card glass-panel" data-category="python">
             <div class="project-header">
               <span class="project-badge">Python Automation &amp; Scripts</span>
               <div class="project-links">
@@ -315,7 +338,7 @@
           </article>
 
           <!-- Project 3: LeafyPop -->
-          <article class="project-card glass-panel" id="project-leafypop">
+          <article class="project-card glass-panel" data-category="fullstack python">
             <div class="project-header">
               <span class="project-badge">Full-Stack Application</span>
               <div class="project-links">
@@ -348,10 +371,11 @@
           </article>
 
           <!-- Project 4: Distributed Rate Limiter -->
-          <article class="project-card glass-panel" id="project-ratelimiter">
+          <article class="project-card glass-panel" data-category="architecture python">
             <div class="project-header">
               <span class="project-badge">Backend Architecture</span>
               <div class="project-links">
+                <button type="button" class="project-link btn-view-doc" data-doc="ratelimiter" title="View Full System Architecture Spec"><i class="fa-solid fa-file-lines"></i> Read Architecture Spec</button>
                 <a href="https://github.com/ayushi-1115" target="_blank" class="project-link" title="GitHub Code"><i class="fa-brands fa-github"></i> View Code</a>
               </div>
             </div>
@@ -379,10 +403,11 @@
           </article>
 
           <!-- Project 5: CoChat -->
-          <article class="project-card glass-panel" id="project-cochat">
+          <article class="project-card glass-panel" data-category="architecture python">
             <div class="project-header">
               <span class="project-badge">Real-Time WebSockets</span>
               <div class="project-links">
+                <button type="button" class="project-link btn-view-doc" data-doc="cochat" title="View Full System Architecture Spec"><i class="fa-solid fa-file-lines"></i> Read Architecture Spec</button>
                 <a href="https://github.com/ayushi-1115" target="_blank" class="project-link" title="GitHub Code"><i class="fa-brands fa-github"></i> View Code</a>
               </div>
             </div>
@@ -413,17 +438,59 @@
       </div>
     </section>
 
+    <!-- Interactive FastAPI Code Playground Section -->
+    <section class="section playground" id="playground">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">&lt;04. Live Developer Sandbox&gt;</span>
+          <h2 class="section-title">Interactive FastAPI Code Playground</h2>
+        </div>
+
+        <div class="playground-container glass-panel">
+          <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+            Test live FastAPI backend endpoints and JSON schema responses directly from this interactive terminal.
+          </p>
+
+          <div class="playground-btns">
+            <button type="button" class="btn btn-sm btn-glass btn-api-test" data-endpoint="health">
+              <i class="fa-solid fa-heart-pulse text-blue"></i> GET / (Health Check)
+            </button>
+            <button type="button" class="btn btn-sm btn-glass btn-api-test" data-endpoint="projects">
+              <i class="fa-solid fa-box text-blue"></i> GET /api/projects
+            </button>
+            <button type="button" class="btn btn-sm btn-glass btn-api-test" data-endpoint="geohack">
+              <i class="fa-solid fa-location-dot text-blue"></i> POST /api/geohack/calculate
+            </button>
+            <button type="button" class="btn btn-sm btn-glass btn-api-test" data-endpoint="docs">
+              <i class="fa-solid fa-book-open text-blue"></i> GET /docs (Swagger Spec)
+            </button>
+          </div>
+
+          <div class="playground-terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="terminal-title">fastapi-uvicorn-server ~ bash</span>
+              <span style="font-size: 11px; color: var(--accent-cyan);">Python 3.11 · FastAPI 0.100</span>
+            </div>
+            <div class="terminal-body" id="terminal-output">Click any endpoint button above to test the live FastAPI server response...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Experience Timeline Section -->
     <section class="section experience" id="experience">
       <div class="section-container">
         <div class="section-header">
-          <span class="section-tag">&lt;04. Career Journey&gt;</span>
+          <span class="section-tag">&lt;05. Career Journey&gt;</span>
           <h2 class="section-title">Professional Experience</h2>
         </div>
 
         <div class="timeline">
-
-          <!-- Item 1 -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content glass-panel">
@@ -440,7 +507,6 @@
             </div>
           </div>
 
-          <!-- Item 2 -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content glass-panel">
@@ -457,7 +523,6 @@
             </div>
           </div>
 
-          <!-- Item 3 -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content glass-panel">
@@ -473,7 +538,6 @@
             </div>
           </div>
 
-          <!-- Item 4 -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content glass-panel">
@@ -489,7 +553,6 @@
             </div>
           </div>
 
-          <!-- Item 5 -->
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content glass-panel">
@@ -504,7 +567,6 @@
             </div>
           </div>
 
-          <!-- Item 6 (Education) -->
           <div class="timeline-item">
             <div class="timeline-dot dot-edu"></div>
             <div class="timeline-content glass-panel highlight-edu">
@@ -515,7 +577,6 @@
               <p class="timeline-org">Mahatma Gandhi Institute · Gujarat, India</p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -524,12 +585,11 @@
     <section class="section contact" id="contact">
       <div class="section-container">
         <div class="section-header">
-          <span class="section-tag">&lt;05. Get In Touch&gt;</span>
+          <span class="section-tag">&lt;06. Get In Touch&gt;</span>
           <h2 class="section-title">Let's Connect &amp; Collaborate</h2>
         </div>
 
         <div class="contact-grid">
-          <!-- Info Column -->
           <div class="contact-info glass-panel">
             <h3>Contact Information</h3>
             <p>I'm available for full-time Python Engineering, AI Evaluation, and Technical Writing opportunities.</p>
@@ -569,7 +629,6 @@
             </div>
           </div>
 
-          <!-- Quick Message Form -->
           <form class="contact-form glass-panel" id="contact-form">
             <h3>Send a Message</h3>
             
@@ -603,13 +662,26 @@
     </section>
   </main>
 
+  <!-- Modal Container for Architecture Document Viewer -->
+  <div class="modal-overlay" id="doc-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-doc-title">System Architecture Blueprint</h3>
+        <button type="button" class="modal-close" id="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-doc-body">
+        Loading system architecture document...
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-brand">
         <span class="brand-code">&lt;AP/&gt;</span> Ayushi Patel
       </div>
-      <p class="footer-text">Designed &amp; Built with <i class="fa-solid fa-heart text-blue"></i> using HTML5, CSS3 &amp; JavaScript.</p>
+      <p class="footer-text">Designed &amp; Built with <i class="fa-solid fa-heart text-blue"></i> using HTML5, CSS3, JavaScript &amp; FastAPI.</p>
       <div class="footer-socials">
         <a href="https://github.com/ayushi-1115" target="_blank"><i class="fa-brands fa-github"></i></a>
         <a href="https://linkedin.com/in/ayuship-5b33ba265" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
