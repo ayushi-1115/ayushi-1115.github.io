@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayushi Patel — Python Developer | ML & NLP Engineer | Technical Writer</title>
+  <meta name="description" content="Portfolio of Ayushi Patel — Python Developer, ML & NLP Engineer, and Technical Writing Specialist with 2+ years of experience building scalable backend microservices, AI evaluation datasets, and systems architecture blueprints.">
+  <meta name="keywords" content="Ayushi Patel, Python Developer, Machine Learning Engineer, NLP Engineer, Technical Writer, Systems Design, Django, Portfolio">
+  <meta name="author" content="Ayushi Patel">
+  
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ayushi Patel — Python Developer & ML/NLP Engineer">
+  <meta property="og:description" content="Results-driven Python Developer and Technical Specialist with 2+ years of experience authoring technical documentation, API specifications, and scalable backend microservices.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Background Canvas -->
+  <div class="ambient-background">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-brand" id="nav-brand">
+        <span class="brand-code">&lt;AP/&gt;</span>
+        <span class="brand-name">Ayushi Patel</span>
+      </a>
+      
+      <nav class="nav-links" id="nav-links">
+        <a href="#about" class="nav-link" id="nav-about"><i class="fa-regular fa-user"></i> About</a>
+        <a href="#skills" class="nav-link" id="nav-skills"><i class="fa-solid fa-code"></i> Skills</a>
+        <a href="#projects" class="nav-link" id="nav-projects"><i class="fa-solid fa-layer-group"></i> Projects</a>
+        <a href="#experience" class="nav-link" id="nav-experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
+        <a href="#contact" class="nav-link" id="nav-contact"><i class="fa-regular fa-paper-plane"></i> Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="../project_parchment/Ayushi_Patel_Updated_Resume.pdf" target="_blank" class="btn btn-outline btn-sm" id="btn-resume">
+          <i class="fa-solid fa-file-arrow-down"></i> Resume
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-container">
+        <div class="hero-badge animate-fade-in">
+          <span class="pulse-dot"></span> Open for Engineering & Technical Writing Roles
+        </div>
+
+        <h1 class="hero-title animate-fade-up">
+          Hi, I'm <span class="gradient-text">Ayushi Patel</span>
+        </h1>
+
+        <div class="hero-subtitle animate-fade-up delay-1">
+          I build <span class="typing-text" id="typing-text"></span><span class="cursor">|</span>
+        </div>
+
+        <p class="hero-description animate-fade-up delay-2">
+          Results-driven <strong>Python Developer</strong> and <strong>Technical Specialist</strong> with <strong>2+ years of experience</strong> authoring high-impact technical documentation, API specifications, and scalable backend microservices. Skilled in ML/NLP pipelines, Docs-as-Code, and AI model evaluation.
+        </p>
+
+        <div class="hero-ctas animate-fade-up delay-3">
+          <a href="#projects" class="btn btn-primary" id="btn-hero-projects">
+            Explore Projects <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn btn-glass" id="btn-hero-contact">
+            Get In Touch <i class="fa-regular fa-envelope"></i>
+          </a>
+          <a href="https://github.com/ayushi-1115" target="_blank" class="icon-link" id="hero-github" title="GitHub Profile">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/ayuship-5b33ba265" target="_blank" class="icon-link" id="hero-linkedin" title="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="hero-stats animate-fade-up delay-4">
+          <div class="stat-card">
+            <h3 class="stat-number" data-target="2">2+</h3>
+            <p class="stat-label">Years Experience</p>
+          </div>
+          <div class="stat-card">
+            <h3 class="stat-number" data-target="15">15+</h3>
+            <p class="stat-label">Systems Architecture & Docs</p>
+          </div>
+          <div class="stat-card">
+            <h3 class="stat-number" data-target="100">100%</h3>
+            <p class="stat-label">Code & AI Eval Accuracy</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">&lt;01. About Me&gt;</span>
+          <h2 class="section-title">Bridging Code, AI &amp; Technical Communication</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card glass-panel">
+            <div class="about-icon">
+              <i class="fa-solid fa-code-branch"></i>
+            </div>
+            <h3>Backend Engineering</h3>
+            <p>Proficient in Python, Django, REST APIs, WebSockets, PostgreSQL, and Docker. I build resilient microservices and automated data pipelines designed for high throughput and clean maintainability.</p>
+          </div>
+
+          <div class="about-card glass-panel">
+            <div class="about-icon">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <h3>Machine Learning &amp; AI Evaluation</h3>
+            <p>Experienced in supervised ML models, NLTK/spaCy text pipelines, SFT dataset creation, RLHF model evaluation, and prompt alignment for frontier AI laboratories.</p>
+          </div>
+
+          <div class="about-card glass-panel">
+            <div class="about-icon">
+              <i class="fa-solid fa-file-code"></i>
+            </div>
+            <h3>Docs-as-Code &amp; Systems Design</h3>
+            <p>Passionate about transforming complex backend architectures, API specifications, and operational SOP runbooks into clear, structured, developer-friendly documentation using Markdown and Git.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">&lt;02. Technical Arsenal&gt;</span>
+          <h2 class="section-title">Skills &amp; Technologies</h2>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Card 1 -->
+          <div class="skill-category glass-panel">
+            <div class="category-header">
+              <i class="fa-solid fa-terminal category-icon"></i>
+              <h3>Languages &amp; Backend</h3>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fa-brands fa-python"></i> Python</span>
+              <span class="skill-pill"><i class="fa-solid fa-database"></i> SQL / PostgreSQL</span>
+              <span class="skill-pill"><i class="fa-solid fa-server"></i> Django</span>
+              <span class="skill-pill"><i class="fa-solid fa-bolt"></i> REST APIs</span>
+              <span class="skill-pill"><i class="fa-brands fa-docker"></i> Docker</span>
+              <span class="skill-pill"><i class="fa-solid fa-network-wired"></i> WebSockets</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="skill-category glass-panel">
+            <div class="category-header">
+              <i class="fa-solid fa-diagram-project category-icon"></i>
+              <h3>Documentation &amp; Systems Architecture</h3>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fa-solid fa-book"></i> Technical Writing</span>
+              <span class="skill-pill"><i class="fa-solid fa-cube"></i> System Design Blueprints</span>
+              <span class="skill-pill"><i class="fa-solid fa-gear"></i> API Specifications</span>
+              <span class="skill-pill"><i class="fa-solid fa-clipboard-list"></i> Developer SOPs</span>
+              <span class="skill-pill"><i class="fa-brands fa-markdown"></i> Markdown &amp; Git</span>
+              <span class="skill-pill"><i class="fa-solid fa-list-check"></i> OpenAPI / Swagger</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="skill-category glass-panel">
+            <div class="category-header">
+              <i class="fa-solid fa-microchip category-icon"></i>
+              <h3>Machine Learning &amp; AI Evaluation</h3>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fa-solid fa-robot"></i> scikit-learn</span>
+              <span class="skill-pill"><i class="fa-solid fa-fire"></i> PyTorch / TensorFlow</span>
+              <span class="skill-pill"><i class="fa-solid fa-language"></i> NLTK / spaCy</span>
+              <span class="skill-pill"><i class="fa-solid fa-sliders"></i> Transformers</span>
+              <span class="skill-pill"><i class="fa-solid fa-sliders"></i> SFT &amp; RLHF Evals</span>
+              <span class="skill-pill"><i class="fa-solid fa-check-double"></i> Model Alignment</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="skill-category glass-panel">
+            <div class="category-header">
+              <i class="fa-solid fa-cloud category-icon"></i>
+              <h3>Tools, Cloud &amp; Platforms</h3>
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fa-brands fa-github"></i> Git / GitHub</span>
+              <span class="skill-pill"><i class="fa-brands fa-linux"></i> Linux OS</span>
+              <span class="skill-pill"><i class="fa-solid fa-cloud-arrow-up"></i> Cloudinary</span>
+              <span class="skill-pill"><i class="fa-solid fa-globe"></i> Render Deployment</span>
+              <span class="skill-pill"><i class="fa-solid fa-vial"></i> Jupyter Notebook</span>
+              <span class="skill-pill"><i class="fa-solid fa-code"></i> VS Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="section projects" id="projects">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">&lt;03. Portfolio Showcase&gt;</span>
+          <h2 class="section-title">Featured Projects &amp; Architecture Specs</h2>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- Project 1 -->
+          <article class="project-card glass-panel" id="project-leafypop">
+            <div class="project-header">
+              <span class="project-badge">Full-Stack Application</span>
+              <div class="project-links">
+                <a href="https://leafypop.onrender.com" target="_blank" class="project-link" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+                <a href="https://github.com/ayushi-1115" target="_blank" class="project-link" title="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+              </div>
+            </div>
+
+            <h3 class="project-title">LeafyPop — Microgreens E-Commerce Platform</h3>
+            <p class="project-description">
+              Full-stack Django e-commerce web platform deployed on Render featuring secure user authentication, dynamic catalog management, Cloudinary media storage, and real-time order notifications.
+            </p>
+
+            <div class="project-highlights">
+              <ul>
+                <li><i class="fa-solid fa-check text-blue"></i> Multi-tier user authorization &amp; cart persistence.</li>
+                <li><i class="fa-solid fa-check text-blue"></i> Cloudinary integration for scalable product media asset management.</li>
+                <li><i class="fa-solid fa-check text-blue"></i> Complete developer integration documentation &amp; REST API specs.</li>
+              </ul>
+            </div>
+
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Django</span>
+              <span>PostgreSQL</span>
+              <span>Cloudinary</span>
+              <span>Render</span>
+              <span>WebSockets</span>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card glass-panel" id="project-geohack">
+            <div class="project-header">
+              <span class="project-badge">Systems Architecture &amp; Python</span>
+              <div class="project-links">
+                <a href="https://github.com/ayushi-1115" target="_blank" class="project-link" title="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+              </div>
+            </div>
+
+            <h3 class="project-title">GeoHack — Real-Time Geofencing System Design</h3>
+            <p class="project-description">
+              Production-ready systems architecture and Python implementation for real-time location tracking, Haversine distance geofencing, and spatial query optimization.
+            </p>
+
+            <div class="project-highlights">
+              <ul>
+                <li><i class="fa-solid fa-check text-blue"></i> Implemented Haversine formula for high-accuracy coordinate calculations.</li>
+                <li><i class="fa-solid fa-check text-blue"></i> Authored end-to-end technical system design blueprint and API contracts.</li>
+                <li><i class="fa-solid fa-check text-blue"></i> Automated docx/HTML generation scripts for Docs-as-Code workflows.</li>
+              </ul>
+            </div>
+
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Haversine Algorithm</span>
+              <span>Spatial GeoJSON</span>
+              <span>System Design</span>
+              <span>Docs-as-Code</span>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card glass-panel" id="project-ratelimiter">
+            <div class="project-header">
+              <span class="project-badge">Backend Architecture</span>
+              <div class="project-links">
+                <a href="https://github.com/ayushi-1115" target="_blank" class="project-link" title="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+              </div>
+            </div>
+
+            <h3 class="project-title">Distributed Rate Limiter Architecture</h3>
+            <p class="project-description">
+              High-throughput rate limiting microservice architecture blueprint supporting Token Bucket and Sliding Window Counter algorithms for API protection.
+            </p>
+
+            <div class="project-highlights">
+              <ul>
+                <li><i class="fa-solid fa-check text-blue"></i> Multi-tiered throttling for client IP, user ID, and API key limits.</li>
+                <li><i class="fa-solid fa-check text-blue"></i> Redis-backed distributed state tracking to handle peak concurrent requests.</li>
+                <li><i class="fa-solid fa-check text-blue"></i> Published comprehensive OpenAPI specification &amp; developer SOP runbook.</li>
+              </ul>
+            </div>
+
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Redis</span>
+              <span>Sliding Window</span>
+              <span>API Gateway Throttling</span>
+              <span>OpenAPI</span>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card glass-panel" id="project-cochat">
+            <div class="project-header">
+              <span class="project-badge">Real-Time WebSockets</span>
+              <div class="project-links">
+                <a href="https://github.com/ayushi-1115" target="_blank" class="project-link" title="GitHub Code"><i class="fa-brands fa-github"></i> Code</a>
+              </div>
+            </div>
+
+            <h3 class="project-title">CoChat — Real-Time Chat Infrastructure</h3>
+            <p class="project-description">
+              Asynchronous WebSocket messaging engine and system architecture design detailing room management, message persistence, and presence status.
+            </p>
+
+            <div class="project-highlights">
+              <ul>
+                <li><i class="fa-solid fa-check text-blue"></i> Asyncio-driven WebSocket event broadcast engine.</li>
+                <li><i class="fa-solid fa-check text-blue"></i> Detailed database schema blueprints for chat rooms &amp; audit logs.</li>
+                <li><i class="fa-solid fa-check text-blue"></i> Includes production deployment runbooks and failure recovery guides.</li>
+              </ul>
+            </div>
+
+            <div class="project-tags">
+              <span>Python</span>
+              <span>WebSockets</span>
+              <span>Asyncio</span>
+              <span>System Design</span>
+              <span>SOP Runbooks</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section class="section experience" id="experience">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">&lt;04. Career Journey&gt;</span>
+          <h2 class="section-title">Professional Experience</h2>
+        </div>
+
+        <div class="timeline">
+
+          <!-- Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-header">
+                <span class="timeline-role">Freelance AI Evaluation &amp; Technical Content Specialist</span>
+                <span class="timeline-date">Nov 2025 – Present</span>
+              </div>
+              <p class="timeline-org">Remote · Frontier AI Labs</p>
+              <ul class="timeline-bullets">
+                <li>Evaluated and benchmarked AI-generated code, python scripts, and technical guides to improve model reasoning and alignment.</li>
+                <li>Authored technical architecture blueprints, REST API catalogs, and developer SOP runbooks using Markdown &amp; Git.</li>
+                <li>Created Supervised Fine-Tuning (SFT) datasets, prompt rankings, and multilingual evaluation sets.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-header">
+                <span class="timeline-role">Software Developer (Python)</span>
+                <span class="timeline-date">Jun 2025 – Oct 2025</span>
+              </div>
+              <p class="timeline-org">IT IDOL Technologies · Valsad, India</p>
+              <ul class="timeline-bullets">
+                <li>Engineered backend Python microservices and automated workflows, reducing processing overhead by 40%.</li>
+                <li>Authored detailed API specifications, architectural designs, and deployment runbooks for core software modules.</li>
+                <li>Conducted code reviews across multiple codebases, enforcing PEP 8 standards and clean architecture.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-header">
+                <span class="timeline-role">Python Developer</span>
+                <span class="timeline-date">Jan 2023 – May 2023</span>
+              </div>
+              <p class="timeline-org">Pragnakalp Techlabs · Chikhli, India</p>
+              <ul class="timeline-bullets">
+                <li>Built Python NLP pipelines and automation solutions for real-world client applications.</li>
+                <li>Created developer how-to guides and integration documentation for third-party REST APIs and libraries.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-header">
+                <span class="timeline-role">ML / DL / NLP Intern</span>
+                <span class="timeline-date">Aug 2022 – Dec 2022</span>
+              </div>
+              <p class="timeline-org">1Rivet Service Provider Company · Valsad, India</p>
+              <ul class="timeline-bullets">
+                <li>Developed and evaluated supervised ML and NLP classification models using scikit-learn and TensorFlow.</li>
+                <li>Documented data preprocessing workflows, feature engineering steps, and model performance metrics.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-panel">
+              <div class="timeline-header">
+                <span class="timeline-role">Python Intern</span>
+                <span class="timeline-date">Mar 2021 – Feb 2022</span>
+              </div>
+              <p class="timeline-org">PySpiders / QSpiders · Bengaluru, India</p>
+              <ul class="timeline-bullets">
+                <li>Hands-on implementation of Python OOP, data structures, file I/O, web scraping, and QA testing suites.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 6 (Education) -->
+          <div class="timeline-item">
+            <div class="timeline-dot dot-edu"></div>
+            <div class="timeline-content glass-panel highlight-edu">
+              <div class="timeline-header">
+                <span class="timeline-role"><i class="fa-solid fa-graduation-cap"></i> B.E. in Computer Science</span>
+                <span class="timeline-date">2017 – 2021</span>
+              </div>
+              <p class="timeline-org">Mahatma Gandhi Institute · Gujarat, India</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">&lt;05. Get In Touch&gt;</span>
+          <h2 class="section-title">Let's Connect &amp; Collaborate</h2>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Info Column -->
+          <div class="contact-info glass-panel">
+            <h3>Contact Information</h3>
+            <p>I'm available for full-time Python Engineering, AI Evaluation, and Technical Writing opportunities.</p>
+
+            <div class="contact-methods">
+              <div class="contact-method">
+                <i class="fa-solid fa-envelope method-icon"></i>
+                <div>
+                  <span class="method-label">Email</span>
+                  <a href="mailto:ayushisp1132@gmail.com" class="method-value">ayushisp1132@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <i class="fa-solid fa-location-dot method-icon"></i>
+                <div>
+                  <span class="method-label">Location</span>
+                  <span class="method-value">Valsad, Gujarat, India</span>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <i class="fa-brands fa-linkedin-in method-icon"></i>
+                <div>
+                  <span class="method-label">LinkedIn</span>
+                  <a href="https://linkedin.com/in/ayuship-5b33ba265" target="_blank" class="method-value">linkedin.com/in/ayuship-5b33ba265</a>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <i class="fa-brands fa-github method-icon"></i>
+                <div>
+                  <span class="method-label">GitHub</span>
+                  <a href="https://github.com/ayushi-1115" target="_blank" class="method-value">github.com/ayushi-1115</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Message Form -->
+          <form class="contact-form glass-panel" id="contact-form">
+            <h3>Send a Message</h3>
+            
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" required placeholder="John Doe">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" required placeholder="john@example.com">
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" required placeholder="Job Opportunity / Project Collaboration">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" rows="4" required placeholder="Hi Ayushi, I'd like to discuss..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" id="btn-submit">
+              Send Message <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            <div class="form-toast" id="form-toast"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="brand-code">&lt;AP/&gt;</span> Ayushi Patel
+      </div>
+      <p class="footer-text">Designed &amp; Built with <i class="fa-solid fa-heart text-blue"></i> using HTML5, CSS3 &amp; JavaScript.</p>
+      <div class="footer-socials">
+        <a href="https://github.com/ayushi-1115" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/in/ayuship-5b33ba265" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:ayushisp1132@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
