@@ -319,7 +319,7 @@ pipeline.expire(userKey, 60);</code></pre>
   }
 
   /* --------------------------------------------------------------------------
-     7. Interactive AI Chatbot Assistant Engine
+     7. Comprehensive AI Chatbot Assistant Engine (All Topics)
      -------------------------------------------------------------------------- */
   const chatbotToggle = document.getElementById('chatbot-toggle');
   const chatbotWindow = document.getElementById('chatbot-window');
@@ -341,16 +341,29 @@ pipeline.expire(userKey, 60);</code></pre>
   }
 
   const aiKnowledge = {
-    skills: "Ayushi is skilled in Python, FastAPI, Django, REST APIs, WebSockets, PostgreSQL, Docker, Machine Learning (scikit-learn, PyTorch, NLTK/spaCy), Docs-as-Code, and AI Model Evaluation (RLHF, SFT).",
+    // 1. Resume & Career
+    skills: "Ayushi specializes in Python, FastAPI, Django, REST APIs, WebSockets, PostgreSQL, Docker, Machine Learning (scikit-learn, PyTorch, NLTK/spaCy), Docs-as-Code, and AI Model Evaluation (RLHF, SFT).",
     experience: "Ayushi has 2+ years of experience including roles as Freelance AI Specialist (Nov 2025–Present), Software Developer at IT IDOL Technologies (Jun–Oct 2025), Python Developer at Pragnakalp Techlabs, and ML Intern at 1Rivet.",
     projects: "Her key projects include LeafyPop (Django E-Commerce), GeoHack (Real-Time Geofencing System), Docs-as-Code Python Suite, Distributed Rate Limiter, and CoChat WebSockets.",
-    contact: "You can reach Ayushi via email at ayushisp1132@gmail.com, on LinkedIn (linkedin.com/in/ayuship-5b33ba265), or on GitHub (github.com/ayushi-1115)."
+    contact: "You can reach Ayushi directly via email at ayushisp1132@gmail.com, on LinkedIn (linkedin.com/in/ayuship-5b33ba265), or on GitHub (github.com/ayushi-1115).",
+    
+    // 2. Technical Explanations
+    fastapi: "FastAPI is a modern, high-performance Python framework for building REST APIs. It uses async/await, Pydantic type validation, and automatically generates interactive Swagger documentation (/docs).",
+    django: "Django is a full-stack Python web framework with an integrated ORM, authentication system, and admin panel, used in projects like Ayushi's LeafyPop e-commerce app.",
+    haversine: "The Haversine formula calculates the spherical distance between two GPS coordinate points on Earth using spherical trigonometry. Ayushi implemented this in her GeoHack project for geofencing.",
+    rlhf: "Reinforcement Learning from Human Feedback (RLHF) aligns AI model outputs with human intent and safety preferences. Ayushi evaluates AI model outputs and creates SFT datasets for frontier AI labs.",
+    websockets: "WebSockets provide bi-directional, full-duplex communication over a single TCP connection, ideal for real-time applications like Ayushi's CoChat messaging engine.",
+    docker: "Docker containerizes applications into standardized packages containing code, runtime, and system tools for consistent deployment across environments.",
+    
+    // 3. Interview & Hiring
+    why_hire: "Ayushi is a versatile Python Developer who combines 2+ years of strong backend software engineering skills with high-impact Technical Writing and AI Model Evaluation expertise. She delivers production-ready code with clean architecture.",
+    availability: "Ayushi is open for full-time Python Developer, ML/NLP Engineer, and Technical Writing positions (Remote or On-site in India)."
   };
 
   function sendChatMessage(text) {
     if (!text.trim()) return;
 
-    // User message
+    // Render User Message
     const userDiv = document.createElement('div');
     userDiv.className = 'chat-msg user';
     userDiv.textContent = text;
@@ -359,15 +372,41 @@ pipeline.expire(userKey, 60);</code></pre>
     chatInput.value = '';
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    // AI Response logic
+    // AI Intelligent Response Logic
     setTimeout(() => {
       const lower = text.toLowerCase();
-      let reply = "I'm Ayushi's AI assistant! Ayushi is a Python Developer and Technical Writing Specialist with 2+ years of experience. You can ask me about her skills, experience, projects, or contact info!";
+      let reply = "";
 
-      if (lower.includes('skill') || lower.includes('python') || lower.includes('tech')) reply = aiKnowledge.skills;
-      else if (lower.includes('experience') || lower.includes('work') || lower.includes('job') || lower.includes('history')) reply = aiKnowledge.experience;
-      else if (lower.includes('project') || lower.includes('geohack') || lower.includes('leafypop')) reply = aiKnowledge.projects;
-      else if (lower.includes('contact') || lower.includes('email') || lower.includes('hire') || lower.includes('reach')) reply = aiKnowledge.contact;
+      // Topic Matching
+      if (lower.includes('hi') || lower.includes('hello') || lower.includes('hey')) {
+        reply = "Hello! I'm Ayushi's AI Assistant. Ask me anything about her skills, projects, Python engineering, FastAPI, ML/AI concepts, or hiring details!";
+      } else if (lower.includes('skill') || lower.includes('python') || lower.includes('tech stack')) {
+        reply = aiKnowledge.skills;
+      } else if (lower.includes('experience') || lower.includes('work') || lower.includes('job') || lower.includes('history') || lower.includes('career')) {
+        reply = aiKnowledge.experience;
+      } else if (lower.includes('project') || lower.includes('leafypop') || lower.includes('geohack') || lower.includes('cochat')) {
+        reply = aiKnowledge.projects;
+      } else if (lower.includes('contact') || lower.includes('email') || lower.includes('reach') || lower.includes('phone')) {
+        reply = aiKnowledge.contact;
+      } else if (lower.includes('fastapi')) {
+        reply = aiKnowledge.fastapi;
+      } else if (lower.includes('django')) {
+        reply = aiKnowledge.django;
+      } else if (lower.includes('haversine') || lower.includes('geofence')) {
+        reply = aiKnowledge.haversine;
+      } else if (lower.includes('rlhf') || lower.includes('sft') || lower.includes('ai eval')) {
+        reply = aiKnowledge.rlhf;
+      } else if (lower.includes('websocket')) {
+        reply = aiKnowledge.websockets;
+      } else if (lower.includes('docker')) {
+        reply = aiKnowledge.docker;
+      } else if (lower.includes('why hire') || lower.includes('hire') || lower.includes('strength')) {
+        reply = aiKnowledge.why_hire;
+      } else if (lower.includes('available') || lower.includes('remote') || lower.includes('full time') || lower.includes('role')) {
+        reply = aiKnowledge.availability;
+      } else {
+        reply = `That's a great question! Ayushi specializes in Python engineering, FastAPI microservices, ML/NLP pipelines, and technical documentation. You can also contact her directly at ayushisp1132@gmail.com for specific inquiries.`;
+      }
 
       const botDiv = document.createElement('div');
       botDiv.className = 'chat-msg bot';
@@ -375,7 +414,7 @@ pipeline.expire(userKey, 60);</code></pre>
       chatMessages.appendChild(botDiv);
 
       chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 600);
+    }, 500);
   }
 
   if (chatSendBtn && chatInput) {
