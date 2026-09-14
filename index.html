@@ -102,52 +102,68 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
       <div class="hero-container">
-        <div class="hero-badge animate-fade-in">
-          <span class="pulse-dot"></span> <span id="txt-hero-badge">Open for Engineering &amp; Technical Writing Roles</span>
-        </div>
+        <div class="hero-grid-wrapper">
+          <div class="hero-text-col">
+            <div class="hero-badge animate-fade-in">
+              <span class="pulse-dot"></span> <span id="txt-hero-badge">Open for Engineering &amp; Technical Writing Roles</span>
+            </div>
 
-        <h1 class="hero-title animate-fade-up">
-          <span id="txt-hero-greeting">Hi, I'm</span> <span class="gradient-text">Ayushi Patel</span>
-        </h1>
+            <h1 class="hero-title animate-fade-up">
+              <span id="txt-hero-greeting">Hi, I'm</span> <span class="gradient-text">Ayushi Patel</span>
+            </h1>
 
-        <div class="hero-subtitle animate-fade-up delay-1">
-          I build <span class="typing-text" id="typing-text"></span><span class="cursor">|</span>
-        </div>
+            <div class="hero-subtitle animate-fade-up delay-1">
+              I build <span class="typing-text" id="typing-text"></span><span class="cursor">|</span>
+            </div>
 
-        <p class="hero-description animate-fade-up delay-2" id="txt-hero-desc">
-          Results-driven <strong>Python Developer</strong> and <strong>Technical Specialist</strong> with <strong>2+ years of experience</strong> authoring high-impact technical documentation, API specifications, and scalable backend microservices. Skilled in FastAPI, ML/NLP pipelines, Docs-as-Code, and AI model evaluation.
-        </p>
+            <p class="hero-description animate-fade-up delay-2" id="txt-hero-desc">
+              Results-driven <strong>Python Developer</strong> and <strong>Technical Specialist</strong> with <strong>2+ years of experience</strong> authoring high-impact technical documentation, API specifications, and scalable backend microservices. Skilled in FastAPI, ML/NLP pipelines, Docs-as-Code, and AI model evaluation.
+            </p>
 
-        <!-- Voice Audio Bio Introduction Player -->
-        <div class="audio-player-card animate-fade-up delay-2">
-          <button type="button" class="audio-btn" id="audio-play-btn" title="Listen to Voice Introduction">
-            <i class="fa-solid fa-play" id="audio-icon"></i>
-          </button>
-          <div>
-            <div class="audio-info">Listen to Audio Introduction</div>
-            <div style="font-size: 11px; color: var(--text-muted);">Web Speech Synthesis AI Narration</div>
+            <!-- Voice Audio Bio Introduction Player -->
+            <div class="audio-player-card animate-fade-up delay-2">
+              <button type="button" class="audio-btn" id="audio-play-btn" title="Listen to Voice Introduction">
+                <i class="fa-solid fa-play" id="audio-icon"></i>
+              </button>
+              <div>
+                <div class="audio-info">Listen to Audio Introduction</div>
+                <div style="font-size: 11px; color: var(--text-muted);">Web Speech Synthesis AI Narration</div>
+              </div>
+              <div class="sound-wave" id="sound-wave" style="opacity: 0.4;">
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+                <span class="wave-bar"></span>
+              </div>
+            </div>
+
+            <div class="hero-ctas animate-fade-up delay-3">
+              <a href="#projects" class="btn btn-primary" id="btn-hero-projects">
+                Explore Projects <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="#contact" class="btn btn-glass" id="btn-hero-contact">
+                Get In Touch <i class="fa-regular fa-envelope"></i>
+              </a>
+              <a href="https://github.com/ayushi-1115" target="_blank" class="icon-link" id="hero-github" title="GitHub Profile">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://linkedin.com/in/ayuship-5b33ba265" target="_blank" class="icon-link" id="hero-linkedin" title="LinkedIn Profile">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
           </div>
-          <div class="sound-wave" id="sound-wave" style="opacity: 0.4;">
-            <span class="wave-bar"></span>
-            <span class="wave-bar"></span>
-            <span class="wave-bar"></span>
-            <span class="wave-bar"></span>
-          </div>
-        </div>
 
-        <div class="hero-ctas animate-fade-up delay-3">
-          <a href="#projects" class="btn btn-primary" id="btn-hero-projects">
-            Explore Projects <i class="fa-solid fa-arrow-right"></i>
-          </a>
-          <a href="#contact" class="btn btn-glass" id="btn-hero-contact">
-            Get In Touch <i class="fa-regular fa-envelope"></i>
-          </a>
-          <a href="https://github.com/ayushi-1115" target="_blank" class="icon-link" id="hero-github" title="GitHub Profile">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a href="https://linkedin.com/in/ayuship-5b33ba265" target="_blank" class="icon-link" id="hero-linkedin" title="LinkedIn Profile">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
+          <!-- Hero Profile Image Column -->
+          <div class="hero-avatar-col animate-fade-in delay-2">
+            <div class="avatar-card glass-panel">
+              <div class="avatar-glow-ring">
+                <img src="assets/ayushi-profile.png" alt="Ayushi Patel — Python Developer & ML Engineer" class="avatar-img">
+              </div>
+              <div class="avatar-status-badge">
+                <span class="status-dot"></span> Available for Hire
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Google Lighthouse Badges & Metrics Grid -->
@@ -367,6 +383,10 @@
               </div>
             </div>
 
+            <div class="project-thumb-box">
+              <img src="assets/geohack-thumb.png" alt="GeoHack Geofence Spatial UI Preview" class="project-thumb-img">
+            </div>
+
             <h3 class="project-title">GeoHack — Real-Time Geofencing System</h3>
             <p class="project-description">
               Production-ready full-stack location tracking system and Python implementation for real-time Haversine distance geofencing, spatial query optimization, and interactive map dashboard.
@@ -445,6 +465,10 @@
                 <a href="https://leafypop.onrender.com" target="_blank" class="project-link" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
                 <a href="https://github.com/ayushi-1115" target="_blank" class="project-link" title="GitHub Profile"><i class="fa-brands fa-github"></i> View Code</a>
               </div>
+            </div>
+
+            <div class="project-thumb-box">
+              <img src="assets/leafypop-thumb.png" alt="LeafyPop E-Commerce Platform UI" class="project-thumb-img">
             </div>
 
             <h3 class="project-title">LeafyPop — Microgreens E-Commerce Platform</h3>
