@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Ayushi Patel — Portfolio Interactive Scripts (V3 - Advanced Feature Set)
+   Ayushi Patel — Portfolio Interactive Scripts (V4 - Ultra Feature Set)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -51,7 +51,126 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     2. Light / Dark Theme Toggle
+     2. Multilingual Language Switcher (EN, HI, GU)
+     -------------------------------------------------------------------------- */
+  const langSwitcher = document.getElementById('lang-switcher');
+  const langBtn = document.getElementById('lang-btn');
+  const currentLangSpan = document.getElementById('current-lang');
+
+  const i18n = {
+    en: {
+      badge: "Open for Engineering & Technical Writing Roles",
+      greeting: "Hi, I'm",
+      desc: "Results-driven Python Developer and Technical Specialist with 2+ years of experience authoring high-impact technical documentation, API specifications, and scalable backend microservices.",
+      navAbout: "About", navSkills: "Skills", navProjects: "Projects", navExp: "Experience", navContact: "Contact"
+    },
+    hi: {
+      badge: "सॉफ्टवेयर इंजीनियरिंग और टेक्निकल राइटिंग भूमिकाओं के लिए उपलब्ध",
+      greeting: "नमस्ते, मैं हूँ",
+      desc: "2+ वर्षों के अनुभव के साथ परिणाम-उन्मुख पायथन डेवलपर और तकनीकी विशेषज्ञ। उच्च-प्रभाव वाली तकनीकी दस्तावेज़ीकरण, एपीआई विनिर्देशों और स्केलेबल बैकएंड माइक्रोसर्विसेज में कुशल।",
+      navAbout: "परिचय", navSkills: "कौशल", navProjects: "प्रोजेक्ट्स", navExp: "अनुभव", navContact: "संपर्क"
+    },
+    gu: {
+      badge: "સોફ્ટવેર એન્જિનિયરિંગ અને ટેકનિકલ રાઇટિંગ ભૂમિકાઓ માટે ઉપલબ્ધ",
+      greeting: "નમસ્તે, હું છું",
+      desc: "૨+ વર્ષના અનુભવ સાથે પાયથોન ડેવલપર અને ટેકનિકલ સ્પેશિયાલિસ્ટ. ઉચ્ચ-અસરકારક ટેકનિકલ દસ્તાવેજીકરણ, API સ્પષ્ટીકરણો અને સ્કેલેબલ બેકએન્ડ માઇક્રોસર્વિસિસમાં નિષ્ણાત.",
+      navAbout: "વિશે", navSkills: "કૌશલ્ય", navProjects: "પ્રોજેક્ટ્સ", navExp: "અનુભવ", navContact: "સંપર્ક"
+    }
+  };
+
+  if (langBtn && langSwitcher) {
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langSwitcher.classList.toggle('active');
+    });
+
+    document.addEventListener('click', () => {
+      langSwitcher.classList.remove('active');
+    });
+
+    document.querySelectorAll('.lang-option').forEach(option => {
+      option.addEventListener('click', () => {
+        const lang = option.getAttribute('data-lang');
+        if (i18n[lang]) {
+          currentLangSpan.textContent = lang.toUpperCase();
+          document.getElementById('txt-hero-badge').textContent = i18n[lang].badge;
+          document.getElementById('txt-hero-greeting').textContent = i18n[lang].greeting;
+          document.getElementById('txt-hero-desc').innerHTML = i18n[lang].desc;
+
+          document.querySelector('.txt-nav-about').textContent = i18n[lang].navAbout;
+          document.querySelector('.txt-nav-skills').textContent = i18n[lang].navSkills;
+          document.querySelector('.txt-nav-projects').textContent = i18n[lang].navProjects;
+          document.querySelector('.txt-nav-exp').textContent = i18n[lang].navExp;
+          document.querySelector('.txt-nav-contact').textContent = i18n[lang].navContact;
+        }
+      });
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     3. Voice Audio Bio Introduction Player (Web Speech API)
+     -------------------------------------------------------------------------- */
+  const audioPlayBtn = document.getElementById('audio-play-btn');
+  const audioIcon = document.getElementById('audio-icon');
+  const soundWave = document.getElementById('sound-wave');
+  let isSpeaking = false;
+
+  if (audioPlayBtn && 'speechSynthesis' in window) {
+    audioPlayBtn.addEventListener('click', () => {
+      if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        audioIcon.className = 'fa-solid fa-play';
+        if (soundWave) soundWave.style.opacity = '0.4';
+      } else {
+        const textToSpeak = "Hi! I am Ayushi Patel, a Python Developer and Technical Writer with over 2 years of experience building scalable backend microservices, machine learning pipelines, and systems architecture blueprints. Welcome to my portfolio!";
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
+
+        utterance.onend = () => {
+          isSpeaking = false;
+          audioIcon.className = 'fa-solid fa-play';
+          if (soundWave) soundWave.style.opacity = '0.4';
+        };
+
+        window.speechSynthesis.speak(utterance);
+        isSpeaking = true;
+        audioIcon.className = 'fa-solid fa-pause';
+        if (soundWave) soundWave.style.opacity = '1.0';
+      }
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     4. Interactive Technical Quiz Widget
+     -------------------------------------------------------------------------- */
+  const quizOptions = document.querySelectorAll('.quiz-option');
+  const quizFeedback = document.getElementById('quiz-feedback');
+
+  if (quizOptions.length > 0 && quizFeedback) {
+    quizOptions.forEach(opt => {
+      opt.addEventListener('click', () => {
+        const isCorrect = opt.getAttribute('data-correct') === 'true';
+        quizFeedback.style.display = 'block';
+
+        if (isCorrect) {
+          quizFeedback.style.background = 'rgba(16, 185, 129, 0.15)';
+          quizFeedback.style.color = '#10B981';
+          quizFeedback.style.border = '1px solid rgba(16, 185, 129, 0.3)';
+          quizFeedback.innerHTML = '🎉 <strong>Correct!</strong> The Haversine formula calculates the exact spherical distance between two GPS coordinate points on Earth using spherical trigonometry.';
+        } else {
+          quizFeedback.style.background = 'rgba(239, 68, 68, 0.15)';
+          quizFeedback.style.color = '#EF4444';
+          quizFeedback.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+          quizFeedback.innerHTML = '❌ <strong>Incorrect.</strong> The correct answer is Option A (Haversine Formula), which is used for GPS geofencing.';
+        }
+      });
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     5. Light / Dark Theme Toggle
      -------------------------------------------------------------------------- */
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = document.getElementById('theme-icon');
@@ -78,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     3. Dual Resume Download & In-Browser Previewer Dropdown
+     6. Dual Resume Download & In-Browser Previewer Dropdown
      -------------------------------------------------------------------------- */
   const resumeDropdown = document.getElementById('resume-dropdown-nav');
   const btnResumeDropdown = document.getElementById('btn-resume-dropdown');
@@ -100,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // In-Browser Resume Previewer
   if (btnPreviewResume) {
     btnPreviewResume.addEventListener('click', () => {
       if (docModal && modalTitle && modalBody) {
@@ -117,30 +235,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <i class="fa-solid fa-download"></i> Download PDF
               </a>
             </div>
-
             <hr style="border: 0; border-top: 1px solid var(--border-glass); margin: 16px 0;">
-
             <h3 style="color: var(--accent-blue); font-size: 15px;">Professional Summary</h3>
-            <p style="font-size: 13.5px; color: var(--text-soft);">Results-driven Python Developer and Technical Specialist with 2+ years of experience authoring technical documentation, systems design architecture, API endpoint specifications, and scalable backend automation. Skilled in Docs-as-Code (Markdown, Git), microservices, and AI model evaluation.</p>
-
-            <h3 style="color: var(--accent-blue); font-size: 15px; margin-top: 20px;">Professional Experience</h3>
-            <div style="margin-bottom: 12px;">
-              <strong style="color: var(--text-main);">Freelance AI Evaluation &amp; Technical Content Specialist</strong> <span style="color: var(--accent-cyan); font-size: 12px;">(Nov 2025 – Present)</span>
-              <ul style="padding-left: 18px; font-size: 13px; color: var(--text-muted);">
-                <li>Evaluated AI-generated code outputs, python scripts, and technical guides for frontier AI labs.</li>
-                <li>Authored technical architecture blueprints, REST API catalogs, and developer SOP runbooks.</li>
-              </ul>
-            </div>
-            <div style="margin-bottom: 12px;">
-              <strong style="color: var(--text-main);">Software Developer (Python)</strong> — IT IDOL Technologies <span style="color: var(--accent-cyan); font-size: 12px;">(Jun 2025 – Oct 2025)</span>
-              <ul style="padding-left: 18px; font-size: 13px; color: var(--text-muted);">
-                <li>Engineered backend Python microservices and automated workflows, reducing processing overhead by 40%.</li>
-                <li>Authored API specifications, architectural designs, and deployment runbooks.</li>
-              </ul>
-            </div>
-
-            <h3 style="color: var(--accent-blue); font-size: 15px; margin-top: 20px;">Education</h3>
-            <p style="font-size: 13px; color: var(--text-soft);"><strong>B.E. in Computer Science</strong> — Mahatma Gandhi Institute (2017 – 2021)</p>
+            <p style="font-size: 13.5px; color: var(--text-soft);">Results-driven Python Developer and Technical Specialist with 2+ years of experience authoring technical documentation, systems design architecture, API endpoint specifications, and scalable backend automation.</p>
           </div>
         `;
         docModal.classList.add('active');
@@ -149,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     4. Project Category Filter Tabs
+     7. Project Category Filter Tabs
      -------------------------------------------------------------------------- */
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
@@ -158,9 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
       const filter = btn.getAttribute('data-filter');
-
       projectCards.forEach(card => {
         const category = card.getAttribute('data-category') || '';
         if (filter === 'all' || category.includes(filter)) {
@@ -173,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* --------------------------------------------------------------------------
-     5. Live GeoHack Haversine Distance Calculator Demo
+     8. Live GeoHack Haversine Distance Calculator Demo
      -------------------------------------------------------------------------- */
   const btnCalcGeo = document.getElementById('btn-calc-geo');
   const geoResult = document.getElementById('geo-result');
@@ -191,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const R = 6371; // km
+      const R = 6371;
       const dLat = (lat2 - lat1) * Math.PI / 180;
       const dLon = (lon2 - lon1) * Math.PI / 180;
       const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
@@ -215,7 +310,57 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------------------------------
-     6. Live Architecture Document Modal & Sequence Diagram Viewer
+     8b. Live GitHub Repositories Fetcher
+     -------------------------------------------------------------------------- */
+  const btnFetchRepos = document.getElementById('btn-fetch-repos');
+  const githubReposGrid = document.getElementById('github-repos-grid');
+
+  async function fetchGitHubRepos() {
+    if (!githubReposGrid) return;
+    try {
+      githubReposGrid.innerHTML = `<div style="color:var(--accent-cyan); font-family:var(--font-mono); font-size:12px;"><i class="fa-solid fa-spinner fa-spin"></i> Fetching live repositories from GitHub API...</div>`;
+      const res = await fetch('https://api.github.com/users/ayushi-1115/repos?sort=updated&per_page=6');
+      if (!res.ok) throw new Error('GitHub API rate limited or offline');
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        githubReposGrid.innerHTML = data.map(repo => `
+          <a href="${repo.html_url}" target="_blank" class="repo-mini-card" style="text-decoration:none;">
+            <div style="font-weight: 700; color: var(--accent-cyan);"><i class="fa-solid fa-book-bookmark"></i> ${repo.name}</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin: 6px 0;">${repo.description || 'Python Development & Architecture Repository'}</div>
+            <div style="font-size: 11px; color: var(--text-soft); font-family: var(--font-mono); display:flex; justify-content:space-between;">
+              <span><span style="color: #3572A5;">●</span> ${repo.language || 'Python'}</span>
+              <span>⭐ ${repo.stargazers_count}</span>
+            </div>
+          </a>
+        `).join('');
+      }
+    } catch (err) {
+      githubReposGrid.innerHTML = `
+        <a href="https://github.com/ayushi-1115/ayushi-1115.github.io" target="_blank" class="repo-mini-card" style="text-decoration:none;">
+          <div style="font-weight: 700; color: var(--accent-cyan);"><i class="fa-solid fa-book-bookmark"></i> ayushi-1115.github.io</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin: 6px 0;">Official Developer Portfolio &amp; Systems Architecture Blueprints</div>
+          <div style="font-size: 11px; color: var(--text-soft); font-family: var(--font-mono);"><span style="color: #3572A5;">● HTML / CSS / JS / Python</span></div>
+        </a>
+        <a href="https://github.com/ayushi-1115/geohack" target="_blank" class="repo-mini-card" style="text-decoration:none;">
+          <div style="font-weight: 700; color: var(--accent-cyan);"><i class="fa-solid fa-book-bookmark"></i> geohack</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin: 6px 0;">Real-Time Haversine Geofence Engine &amp; API Specs</div>
+          <div style="font-size: 11px; color: var(--text-soft); font-family: var(--font-mono);"><span style="color: #3572A5;">● Python / FastAPI</span></div>
+        </a>
+        <a href="https://github.com/ayushi-1115" target="_blank" class="repo-mini-card" style="text-decoration:none;">
+          <div style="font-weight: 700; color: var(--accent-cyan);"><i class="fa-solid fa-book-bookmark"></i> leafy-pop</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin: 6px 0;">Django Microgreens E-Commerce Platform</div>
+          <div style="font-size: 11px; color: var(--text-soft); font-family: var(--font-mono);"><span style="color: #3572A5;">● Python / Django</span></div>
+        </a>
+      `;
+    }
+  }
+
+  if (btnFetchRepos) {
+    btnFetchRepos.addEventListener('click', fetchGitHubRepos);
+  }
+
+  /* --------------------------------------------------------------------------
+     9. Live Architecture Document Modal & Sequence Flow
      -------------------------------------------------------------------------- */
   const docsDatabase = {
     geohack: {
@@ -223,24 +368,10 @@ document.addEventListener('DOMContentLoaded', () => {
       content: `
         <h2>1. System Architecture Overview</h2>
         <p>GeoHack is a high-availability real-time location processing service designed to evaluate user GPS coordinates against dynamic polygon geofences with sub-second latency.</p>
-
-        <h3>Interactive Sequence Flow</h3>
         <div class="sequence-flow">
           <div class="flow-step"><span class="flow-node">Mobile GPS Client</span> ➔ <code>POST /api/location</code> ➔ <span class="flow-node">FastAPI Gateway</span></div>
           <div class="flow-step"><span class="flow-node">FastAPI Gateway</span> ➔ <code>Calculate Haversine(lat, lon)</code> ➔ <span class="flow-node">Spatial Engine</span></div>
-          <div class="flow-step"><span class="flow-node">Spatial Engine</span> ➔ <code>Query Redis GeoIndex</code> ➔ <span class="flow-node">Redis Cluster</span></div>
-          <div class="flow-step"><span class="flow-node">Redis Cluster</span> ➔ <code>Return Geofence Event (IN/OUT)</code> ➔ <span class="flow-node">Client App</span></div>
         </div>
-
-        <h2>2. Python Haversine Implementation</h2>
-        <pre><code>import math
-
-def haversine(lat1, lon1, lat2, lon2):
-    R = 6371.0 # Radius of earth in km
-    dlat = math.radians(lat2 - lat1)
-    dlon = math.radians(lon2 - lon1)
-    a = math.sin(dlat / 2)**2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2)**2
-    return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))</code></pre>
       `
     },
     ratelimiter: {
@@ -248,23 +379,9 @@ def haversine(lat1, lon1, lat2, lon2):
       content: `
         <h2>1. Architecture &amp; Throttling Algorithms</h2>
         <p>Distributed rate limiter microservice protecting downstream microservices from DDoS attacks and traffic spikes.</p>
-
-        <h3>Interactive Sequence Flow</h3>
         <div class="sequence-flow">
           <div class="flow-step"><span class="flow-node">Client Request</span> ➔ <code>X-API-Key: client_99</code> ➔ <span class="flow-node">Rate Limiter Middleware</span></div>
-          <div class="flow-step"><span class="flow-node">Middleware</span> ➔ <code>ZREMRANGEBYSCORE &amp; ZADD</code> ➔ <span class="flow-node">Redis Cache</span></div>
-          <div class="flow-step"><span class="flow-node">Redis Cache</span> ➔ <code>Check Request Count &lt; Limit</code> ➔ <span class="flow-node">Middleware</span></div>
-          <div class="flow-step"><span class="flow-node">Middleware</span> ➔ <code>200 OK / 429 Too Many Requests</code> ➔ <span class="flow-node">Client</span></div>
         </div>
-
-        <h2>2. Redis ZSET Sliding Window Implementation</h2>
-        <pre><code>long now = currentTimeMillis();
-long windowStart = now - 60000;
-
-pipeline.zremrangebyscore(userKey, 0, windowStart);
-pipeline.zadd(userKey, now, now);
-pipeline.zcard(userKey);
-pipeline.expire(userKey, 60);</code></pre>
       `
     },
     cochat: {
@@ -272,22 +389,6 @@ pipeline.expire(userKey, 60);</code></pre>
       content: `
         <h2>1. High-Level System Architecture</h2>
         <p>Asynchronous WebSocket messaging engine providing low-latency messaging, presence tracking, and chat room state synchronization.</p>
-
-        <h3>Interactive Sequence Flow</h3>
-        <div class="sequence-flow">
-          <div class="flow-step"><span class="flow-node">WebSocket Client</span> ➔ <code>ws://cochat.api/room_01</code> ➔ <span class="flow-node">Asyncio Connection Pool</span></div>
-          <div class="flow-step"><span class="flow-node">Connection Pool</span> ➔ <code>Broadcast Event(message)</code> ➔ <span class="flow-node">Subscribed Peers</span></div>
-          <div class="flow-step"><span class="flow-node">Async Worker</span> ➔ <code>Batch Insert Chat Log</code> ➔ <span class="flow-node">PostgreSQL DB</span></div>
-        </div>
-
-        <h2>2. WebSocket Protocol Schema</h2>
-        <pre><code>{
-  "event": "message:send",
-  "room_id": "room_python_devs",
-  "sender": "Ayushi Patel",
-  "content": "Hello team, deployment is complete!",
-  "timestamp": "2026-09-14T10:00:00Z"
-}</code></pre>
       `
     }
   };
@@ -305,21 +406,17 @@ pipeline.expire(userKey, 60);</code></pre>
   });
 
   if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', () => {
-      docModal.classList.remove('active');
-    });
+    modalCloseBtn.addEventListener('click', () => docModal.classList.remove('active'));
   }
 
   if (docModal) {
     docModal.addEventListener('click', (e) => {
-      if (e.target === docModal) {
-        docModal.classList.remove('active');
-      }
+      if (e.target === docModal) docModal.classList.remove('active');
     });
   }
 
   /* --------------------------------------------------------------------------
-     7. Comprehensive AI Chatbot Assistant Engine (All Topics)
+     10. Comprehensive AI Chatbot Assistant Engine
      -------------------------------------------------------------------------- */
   const chatbotToggle = document.getElementById('chatbot-toggle');
   const chatbotWindow = document.getElementById('chatbot-window');
@@ -329,92 +426,59 @@ pipeline.expire(userKey, 60);</code></pre>
   const chatSendBtn = document.getElementById('chat-send-btn');
 
   if (chatbotToggle && chatbotWindow) {
-    chatbotToggle.addEventListener('click', () => {
-      chatbotWindow.classList.toggle('active');
-    });
-
-    if (chatCloseBtn) {
-      chatCloseBtn.addEventListener('click', () => {
-        chatbotWindow.classList.remove('active');
-      });
-    }
+    chatbotToggle.addEventListener('click', () => chatbotWindow.classList.toggle('active'));
+    if (chatCloseBtn) chatCloseBtn.addEventListener('click', () => chatbotWindow.classList.remove('active'));
   }
 
   const aiKnowledge = {
-    // 1. Resume & Career
     skills: "Ayushi specializes in Python, FastAPI, Django, REST APIs, WebSockets, PostgreSQL, Docker, Machine Learning (scikit-learn, PyTorch, NLTK/spaCy), Docs-as-Code, and AI Model Evaluation (RLHF, SFT).",
-    experience: "Ayushi has 2+ years of experience including roles as Freelance AI Specialist (Nov 2025–Present), Software Developer at IT IDOL Technologies (Jun–Oct 2025), Python Developer at Pragnakalp Techlabs, and ML Intern at 1Rivet.",
-    projects: "Her key projects include LeafyPop (Django E-Commerce), GeoHack (Real-Time Geofencing System), Docs-as-Code Python Suite, Distributed Rate Limiter, and CoChat WebSockets.",
-    contact: "You can reach Ayushi directly via email at ayushisp1132@gmail.com, on LinkedIn (linkedin.com/in/ayuship-5b33ba265), or on GitHub (github.com/ayushi-1115).",
-    
-    // 2. Technical Explanations
-    fastapi: "FastAPI is a modern, high-performance Python framework for building REST APIs. It uses async/await, Pydantic type validation, and automatically generates interactive Swagger documentation (/docs).",
-    django: "Django is a full-stack Python web framework with an integrated ORM, authentication system, and admin panel, used in projects like Ayushi's LeafyPop e-commerce app.",
-    haversine: "The Haversine formula calculates the spherical distance between two GPS coordinate points on Earth using spherical trigonometry. Ayushi implemented this in her GeoHack project for geofencing.",
-    rlhf: "Reinforcement Learning from Human Feedback (RLHF) aligns AI model outputs with human intent and safety preferences. Ayushi evaluates AI model outputs and creates SFT datasets for frontier AI labs.",
-    websockets: "WebSockets provide bi-directional, full-duplex communication over a single TCP connection, ideal for real-time applications like Ayushi's CoChat messaging engine.",
-    docker: "Docker containerizes applications into standardized packages containing code, runtime, and system tools for consistent deployment across environments.",
-    
-    // 3. Interview & Hiring
-    why_hire: "Ayushi is a versatile Python Developer who combines 2+ years of strong backend software engineering skills with high-impact Technical Writing and AI Model Evaluation expertise. She delivers production-ready code with clean architecture.",
-    availability: "Ayushi is open for full-time Python Developer, ML/NLP Engineer, and Technical Writing positions (Remote or On-site in India)."
+    experience: "Ayushi has 2+ years of professional experience across roles: Freelance AI Content & Model Evaluation Specialist (Nov 2025–Present), Software Developer at IT IDOL Technologies (Jun–Oct 2025), Python Developer at Pragnakalp Techlabs (Jan–May 2023), and ML/NLP Intern at 1Rivet (Aug–Dec 2022).",
+    projects: "Her key featured projects include:\n• LeafyPop (Django E-Commerce platform deployed on Render)\n• GeoHack (Real-Time Haversine Geofencing Engine & FastAPI)\n• Docs-as-Code Python Automated Converter Suite\n• Distributed Rate Limiter Microservice Architecture\n• CoChat Asynchronous WebSocket Messaging Infrastructure.",
+    contact: "You can reach Ayushi directly via:\n📧 Email: ayushisp1132@gmail.com\n💼 LinkedIn: linkedin.com/in/ayuship-5b33ba265\n🐙 GitHub: github.com/ayushi-1115\n📍 Location: Valsad, Gujarat, India.",
+    fastapi: "FastAPI is a modern, high-performance web framework for building APIs with Python 3.8+ based on standard Python type hints. Ayushi uses FastAPI for async endpoints, Pydantic data validation, and OpenAPI Swagger documentation generation.",
+    geofence: "Geofence technology calculates whether a user's location falls within a specified boundary. GeoHack uses the Haversine formula: d = 2r arcsin(sqrt(sin²(Δlat/2) + cos(lat1)cos(lat2)sin²(Δlon/2))) to compute spherical distance on Earth with sub-second latency.",
+    whyhire: "Why Hire Ayushi Patel?\n1. 2+ Years of hands-on experience in scalable Python engineering and microservices.\n2. Rare dual expertise: Deep technical coding + high-impact Docs-as-Code technical writing.\n3. Frontier AI model evaluation (RLHF/SFT) experience improving LLM reasoning.\n4. Certified in Banking Fundamentals (IILS score 94%) and Python ML Architecture.",
+    certs: "Ayushi holds multiple credentials:\n• IILS Banking Fundamental Certification (Score 94%)\n• Python Developer & ML Specialist (PySpiders / QSpiders)\n• Frontier AI Model Evaluation & SFT Benchmarking\n• Docs-as-Code & Systems Architecture Specialist.",
+    banking: "Ayushi cleared the IILS Banking Fundamental Certification with a 94% score, demonstrating strong financial engineering domain knowledge, banking workflows, and secure payment processing.",
+    education: "Ayushi holds a Bachelor of Engineering (B.E.) degree in Computer Science & Engineering from Mahatma Gandhi Institute (2017–2021)."
   };
 
   function sendChatMessage(text) {
     if (!text.trim()) return;
-
-    // Render User Message
     const userDiv = document.createElement('div');
     userDiv.className = 'chat-msg user';
     userDiv.textContent = text;
     chatMessages.appendChild(userDiv);
-
     chatInput.value = '';
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    // AI Intelligent Response Logic
     setTimeout(() => {
       const lower = text.toLowerCase();
-      let reply = "";
+      let reply = "Hello! I'm Ayushi's AI Assistant. Ask me anything about her Python skills, projects, FastAPI, ML/NLP, banking certification, or why you should hire her!";
 
-      // Topic Matching
-      if (lower.includes('hi') || lower.includes('hello') || lower.includes('hey')) {
-        reply = "Hello! I'm Ayushi's AI Assistant. Ask me anything about her skills, projects, Python engineering, FastAPI, ML/AI concepts, or hiring details!";
-      } else if (lower.includes('skill') || lower.includes('python') || lower.includes('tech stack')) {
-        reply = aiKnowledge.skills;
-      } else if (lower.includes('experience') || lower.includes('work') || lower.includes('job') || lower.includes('history') || lower.includes('career')) {
-        reply = aiKnowledge.experience;
-      } else if (lower.includes('project') || lower.includes('leafypop') || lower.includes('geohack') || lower.includes('cochat')) {
-        reply = aiKnowledge.projects;
-      } else if (lower.includes('contact') || lower.includes('email') || lower.includes('reach') || lower.includes('phone')) {
-        reply = aiKnowledge.contact;
-      } else if (lower.includes('fastapi')) {
-        reply = aiKnowledge.fastapi;
-      } else if (lower.includes('django')) {
-        reply = aiKnowledge.django;
-      } else if (lower.includes('haversine') || lower.includes('geofence')) {
-        reply = aiKnowledge.haversine;
-      } else if (lower.includes('rlhf') || lower.includes('sft') || lower.includes('ai eval')) {
-        reply = aiKnowledge.rlhf;
-      } else if (lower.includes('websocket')) {
-        reply = aiKnowledge.websockets;
-      } else if (lower.includes('docker')) {
-        reply = aiKnowledge.docker;
-      } else if (lower.includes('why hire') || lower.includes('hire') || lower.includes('strength')) {
-        reply = aiKnowledge.why_hire;
-      } else if (lower.includes('available') || lower.includes('remote') || lower.includes('full time') || lower.includes('role')) {
-        reply = aiKnowledge.availability;
-      } else {
-        reply = `That's a great question! Ayushi specializes in Python engineering, FastAPI microservices, ML/NLP pipelines, and technical documentation. You can also contact her directly at ayushisp1132@gmail.com for specific inquiries.`;
+      if (lower.includes('skill') || lower.includes('python') || lower.includes('stack')) reply = aiKnowledge.skills;
+      else if (lower.includes('experience') || lower.includes('work') || lower.includes('job') || lower.includes('history')) reply = aiKnowledge.experience;
+      else if (lower.includes('project') || lower.includes('geohack') || lower.includes('leafypop') || lower.includes('cochat')) reply = aiKnowledge.projects;
+      else if (lower.includes('contact') || lower.includes('email') || lower.includes('phone') || lower.includes('reach')) reply = aiKnowledge.contact;
+      else if (lower.includes('fastapi') || lower.includes('django') || lower.includes('api')) reply = aiKnowledge.fastapi;
+      else if (lower.includes('geofence') || lower.includes('haversine') || lower.includes('distance') || lower.includes('gps')) reply = aiKnowledge.geofence;
+      else if (lower.includes('why') || lower.includes('hire') || lower.includes('recruit') || lower.includes('candidate')) reply = aiKnowledge.whyhire;
+      else if (lower.includes('cert') || lower.includes('iils') || lower.includes('credential') || lower.includes('degree')) reply = aiKnowledge.certs;
+      else if (lower.includes('bank') || lower.includes('financial') || lower.includes('iils')) reply = aiKnowledge.banking;
+      else if (lower.includes('edu') || lower.includes('degree') || lower.includes('college') || lower.includes('university')) reply = aiKnowledge.education;
+      else if (lower.includes('resume') || lower.includes('cv') || lower.includes('download')) reply = "You can preview or download Ayushi's official PDF and Word (.docx) resumes using the 'Resume' dropdown button in the top navigation bar!";
+      else if (lower.includes('location') || lower.includes('where')) reply = "Ayushi is based in Valsad, Gujarat, India, and is open to both Remote and On-site opportunities.";
+      else if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) reply = "Hello! 👋 I'm Ayushi's AI Assistant. How can I help you learn more about her Python development and technical writing background?";
+      else {
+        reply = `That's a great technical query regarding "${text}"! Ayushi specializes in building robust Python microservices, writing clear Docs-as-Code architecture blueprints, and performing AI model evaluation. Feel free to contact her directly at ayushisp1132@gmail.com!`;
       }
 
       const botDiv = document.createElement('div');
       botDiv.className = 'chat-msg bot';
-      botDiv.textContent = reply;
+      botDiv.innerText = reply;
       chatMessages.appendChild(botDiv);
-
       chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 500);
+    }, 450);
   }
 
   if (chatSendBtn && chatInput) {
@@ -429,77 +493,45 @@ pipeline.expire(userKey, 60);</code></pre>
       const askKey = e.target.getAttribute('data-ask');
       if (askKey && aiKnowledge[askKey]) {
         sendChatMessage(e.target.textContent);
+      } else {
+        sendChatMessage(e.target.textContent);
       }
     }
   });
 
   /* --------------------------------------------------------------------------
-     8. Interactive FastAPI Code Playground
+     11. Interactive FastAPI Code Playground
      -------------------------------------------------------------------------- */
   const apiTestBtns = document.querySelectorAll('.btn-api-test');
   const terminalOutput = document.getElementById('terminal-output');
 
   const mockApiResponses = {
-    health: {
-      status: "online",
-      framework: "FastAPI 0.100.0",
-      developer: "Ayushi Patel",
-      environment: "production",
-      timestamp: new Date().toISOString()
-    },
-    projects: {
-      success: true,
-      count: 3,
-      data: [
-        { id: "geohack", title: "GeoHack Real-Time Geofencing", repo: "https://github.com/ayushi-1115/geohack" },
-        { id: "docs-as-code", title: "Docs-as-Code Python Suite", repo: "https://github.com/ayushi-1115/ayushi-1115.github.io" },
-        { id: "leafypop", title: "LeafyPop E-Commerce Platform", demo: "https://leafypop.onrender.com" }
-      ]
-    },
-    geohack: {
-      success: true,
-      endpoint: "/api/geohack/calculate",
-      distance_km: 74.32,
-      radius_km: 100.0,
-      inside_geofence: true,
-      status: "WITHIN_BOUNDS"
-    },
-    docs: {
-      openapi: "3.0.2",
-      info: {
-        title: "Ayushi Patel Portfolio API",
-        version: "2.0.0",
-        description: "High-performance FastAPI backend with Pydantic validation & Swagger UI"
-      },
-      paths: ["/api/health", "/api/projects", "/api/contact", "/api/geohack/calculate", "/api/resume/download"]
-    }
+    health: { status: "online", framework: "FastAPI 0.100.0", developer: "Ayushi Patel", timestamp: new Date().toISOString() },
+    projects: { success: true, count: 3, data: [{ id: "geohack", title: "GeoHack Real-Time Geofencing", repo: "https://github.com/ayushi-1115/geohack" }] },
+    geohack: { success: true, endpoint: "/api/geohack/calculate", distance_km: 74.32, radius_km: 100.0, inside_geofence: true },
+    docs: { openapi: "3.0.2", info: { title: "Ayushi Patel Portfolio API", version: "2.0.0" } }
   };
 
   apiTestBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const endpoint = btn.getAttribute('data-endpoint');
       const responseData = mockApiResponses[endpoint];
-
       if (terminalOutput && responseData) {
-        terminalOutput.innerHTML = `<span style="color:var(--accent-cyan);">$ requesting endpoint...</span>\n\n` +
-          JSON.stringify(responseData, null, 2);
+        terminalOutput.innerHTML = `<span style="color:var(--accent-cyan);">$ requesting endpoint...</span>\n\n` + JSON.stringify(responseData, null, 2);
       }
     });
   });
 
   /* --------------------------------------------------------------------------
-     9. Navbar Scroll & Active Link Highlight
+     12. Navbar Scroll & Active Link Highlight
      -------------------------------------------------------------------------- */
   const navbar = document.getElementById('navbar');
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-link');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+    if (window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
 
     let currentSection = '';
     sections.forEach(section => {
@@ -512,35 +544,25 @@ pipeline.expire(userKey, 60);</code></pre>
 
     navLinks.forEach(link => {
       link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentSection}`) {
-        link.classList.add('active');
-      }
+      if (link.getAttribute('href') === `#${currentSection}`) link.classList.add('active');
     });
   });
 
   /* --------------------------------------------------------------------------
-     10. Mobile Nav Toggle
+     13. Mobile Nav Toggle & Contact Form Handler
      -------------------------------------------------------------------------- */
   const mobileToggle = document.getElementById('mobile-toggle');
   const navLinksContainer = document.getElementById('nav-links');
-
   if (mobileToggle && navLinksContainer) {
-    mobileToggle.addEventListener('click', () => {
-      navLinksContainer.classList.toggle('active');
-    });
+    mobileToggle.addEventListener('click', () => navLinksContainer.classList.toggle('active'));
   }
 
-  /* --------------------------------------------------------------------------
-     11. Animated Counter Stats
-     -------------------------------------------------------------------------- */
   const statNumbers = document.querySelectorAll('.stat-number');
-
   function animateCounters() {
     statNumbers.forEach(stat => {
       const target = parseInt(stat.getAttribute('data-target'), 10);
       let count = 0;
       const speed = Math.ceil(target / 40);
-
       const updateCount = () => {
         count += speed;
         if (count < target) {
@@ -553,37 +575,24 @@ pipeline.expire(userKey, 60);</code></pre>
       updateCount();
     });
   }
-
   animateCounters();
 
-  /* --------------------------------------------------------------------------
-     12. Contact Form Submission Handler (EmailJS + FastAPI Integration)
-     -------------------------------------------------------------------------- */
   const contactForm = document.getElementById('contact-form');
   const formToast = document.getElementById('form-toast');
-
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-
       const name = document.getElementById('name').value;
       const submitBtn = document.getElementById('btn-submit');
-
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing Message...';
-
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
-
         formToast.className = 'form-toast success';
         formToast.innerHTML = `<i class="fa-solid fa-circle-check"></i> Thank you ${name}! Your message has been sent directly to Ayushi's inbox (ayushisp1132@gmail.com).`;
-
         contactForm.reset();
-
-        setTimeout(() => {
-          formToast.style.display = 'none';
-        }, 5000);
+        setTimeout(() => { formToast.style.display = 'none'; }, 5000);
       }, 1200);
     });
   }
